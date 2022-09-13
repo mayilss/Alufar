@@ -1,0 +1,83 @@
+$yellow: #FFD600;
+$grey: #323031;
+$bg: #F4F4F4;
+$shadow: 0 2px 8px rgb(0 0 0 / 20%);
+
+html {
+  font-size: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.owl-nav{
+  position: relative;
+  .owl-prev, .owl-next{
+    position: absolute;
+    top: -300px;
+    font-size: 5rem !important;
+    width: 5rem !important;
+    border: 1px solid $grey !important;
+
+    &:hover{
+      background-color: transparent !important;
+      span{
+        color: #323031;
+      }
+    }
+  }
+  .owl-next{
+    right: -6.4rem;
+  }
+  .owl-prev{
+    left: -6.4rem;
+  }
+}
+
+.App,
+p,
+a,
+span,
+ul,
+li,
+button,
+h1,
+h2,
+form,
+label,
+input {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+input{
+  padding: 0 1rem;
+  outline: none;
+}
+textarea{
+  padding: 1rem;
+}
+
+main{
+  background-color: #F4F4F4;
+}
+
+@media screen and (max-width: 992px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 6px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  html {
+    font-size: 5px;
+  }
+}

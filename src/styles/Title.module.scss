@@ -1,0 +1,111 @@
+@import "../App.scss";
+
+.title,
+.titleW {
+    position: relative;
+    height: 50px;
+
+    p {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    a {
+        text-align: center;
+        font-weight: 600;
+        font-size: 3.5rem;
+        line-height: 4.3rem;
+        position: absolute;
+        left: 50%;
+        top: 16px;
+        transform: translate(-50%, -50%);
+        padding: 1rem;
+    }
+
+    a::before,
+    a::after,
+    span::before,
+    span::after {
+        content: '';
+        position: absolute;
+        width: 2rem;
+        height: 2rem;
+        background: transparent;
+        transition: 1s;
+    }
+
+    a::before {
+        top: -2px;
+        left: -2px;
+        border-top: 4px solid #ff0;
+        border-left: 4px solid #ff0;
+    }
+
+    a::after {
+        top: -2px;
+        right: -2px;
+        border-top: 4px solid #ff0;
+        border-right: 4px solid #ff0;
+    }
+
+    span::before {
+        bottom: -2px;
+        left: -2px;
+        border-bottom: 4px solid #ff0;
+        border-left: 4px solid #ff0;
+    }
+
+    span::after {
+        bottom: -2px;
+        right: -2px;
+        border-bottom: 4px solid #ff0;
+        border-right: 4px solid #ff0;
+    }
+
+
+    a:hover::before,
+    a:hover::after,
+    a:hover span::before,
+    a:hover span::after {
+        width: 100%;
+        height: 55%;
+    }
+}
+
+.legend{
+    display: flex;
+    align-items: center;
+    .left, .right{
+        width: 3rem;
+        height: 2px;
+        background-color: #ffffff;
+    }
+}
+.btnHolder{
+    width: 11rem;
+    margin: 0 auto;
+}
+
+.title {
+
+    a,
+    p {
+        color: $grey;
+    }
+}
+
+.titleW {
+
+    a,
+    p {
+        color: #ffffff;
+        margin: 2.6rem 1rem;
+    }
+
+    a {
+        font-weight: 600;
+        font-size: 5rem;
+        line-height: 6.1rem;
+    }
+}

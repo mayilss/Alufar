@@ -1,0 +1,20 @@
+.wrapper{
+    max-height: 70vh;
+    overflow: hidden;
+    position: relative;
+    video{
+        width: 100%;
+    }
+}
+.contentHolder{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.content{
+    position: absolute;
+    width: 60%;
+    z-index: 15;
+    top: 15rem;
+    left: -10rem;
+}

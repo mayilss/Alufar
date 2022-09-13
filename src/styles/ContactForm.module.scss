@@ -1,0 +1,109 @@
+@import "../App.scss";
+
+.form {
+    background-color: $grey;
+    border-bottom: 1px solid #ffffff;
+    padding: 5rem 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.7rem 0;
+    row-gap: 2.4rem;
+    width: 70%;
+    margin: 0 auto;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        row-gap: 4rem;
+        width: 100%;
+    }
+
+    h2 {
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 3.5rem;
+        line-height: 2.2rem;
+    }
+}
+
+.itemHolder {
+    display: flex;
+    justify-content: space-between;
+
+    .formItem {
+        width: 49%;
+    }
+}
+
+.formItem {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+
+    label {
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 1.6rem;
+        line-height: 2rem;
+    }
+
+    input {
+        height: 5rem;
+    }
+
+    input,
+    textarea {
+        background-color: transparent;
+        border: 1px solid #ffffff;
+        &:focus{
+            outline: $yellow;
+            border: 1px solid $yellow;
+        }
+    }
+}
+
+.btn {
+    align-self: end;
+}
+
+//page
+
+.itemHolderCol {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+
+    .formItem {
+        width: 100%;
+    }
+}
+
+.contactData{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.6rem;
+    padding-bottom: 2rem;
+}
+
+.dataItem {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    margin: 0 auto;
+    column-gap: 2rem;
+
+    img{
+        width: 2.4rem;
+    }
+
+    p {
+        font-weight: 500;
+        font-size: 1.6rem;
+        line-height: 2rem;
+        color: #ffffff;
+    }
+}

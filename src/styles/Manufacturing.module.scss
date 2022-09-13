@@ -1,0 +1,54 @@
+@import '../App.scss';
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    align-items: flex-start;
+    button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 1.9rem;
+        padding: 1rem 0 1rem 1rem;
+        text-align: left;
+        color: $grey;
+        border-left: 3px solid transparent;
+    }
+    .active{
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 1.9rem;
+        padding: 1rem 0 1rem 1rem;
+        text-align: left;
+        color: $grey;
+        border-left: 3px solid $yellow;
+    }
+}
+
+.tab {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.6rem;
+
+    img {
+        width: 100%;
+    }
+
+    h2 {
+        font-weight: 600;
+        font-size: 3.5rem;
+        line-height: 4.3rem;
+    }
+
+    p {
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+    }
+}

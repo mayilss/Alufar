@@ -1,0 +1,62 @@
+@import '../App.scss';
+
+.page{
+    background-color: $bg;
+    padding: 5rem 0;
+}
+.wrapper {
+    position: relative;
+}
+
+.imgHolder {
+    width: 100%;
+    border: 1px solid $grey;
+    padding: 1rem;
+}
+
+.contentHolder {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2.5rem;
+    row-gap: 3.2rem;
+    position: sticky;
+    top: 0;
+
+    h2 {
+        font-weight: 600;
+        font-size: 3.5rem;
+        line-height: 4.3rem;
+    }
+
+    p {
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+    }
+}
+
+.btnHolder {
+    width: 19rem;
+}
+
+.similar {
+    margin-bottom: 5rem;
+    h2 {
+        font-weight: 600;
+        font-size: 3.5rem;
+        line-height: 4.3rem;
+        margin: 1.6rem 0;
+    }
+
+    h4 {
+        font-weight: 500;
+        font-size: 2rem;
+        line-height: 1.8rem;
+    }
+}
+
+.similarItem{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.6rem;
+}
