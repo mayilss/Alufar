@@ -75,7 +75,7 @@ const Navbar = () => {
                             </li>
                             <Link to='projects'><li className={styles.navItem}>Proyektlər</li></Link>
                             <Link to='about'><li className={styles.navItem}>Haqqımızda</li></Link>
-                            <li className={styles.navItem}>FAQ</li>
+                            <Link to='faqs'><li className={styles.navItem}>FAQ</li></Link>
                             <Link to='contact'><li className={styles.navItem}>Əlaqə</li></Link>
                         </ul>
                     </div>

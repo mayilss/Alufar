@@ -1,5 +1,4 @@
 .wrapper {
-    padding: 17px 0;
     background-color: #FFD600;
 
     .content {
@@ -38,6 +37,7 @@
     line-height: 2rem;
     color: #000000;
     column-gap: .5rem;
+    padding: 25px 0;
 
     &:hover {
         .dropdownContent {
@@ -56,7 +56,7 @@
     display: none;
     width: 90rem;
     z-index: 100;
-    top: 23px;
+    top: 70px;
     left: -20rem;
     padding: 1rem;
 }

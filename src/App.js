@@ -12,6 +12,8 @@ import { Manufacturing } from './pages/Manufacturing';
 import { About } from './pages/About';
 import { Product } from './pages/Product';
 import { ProjectDetails } from './pages/ProjectDetails';
+import { FAQs } from './pages/FAQs';
+import { CategoryInner } from './pages/CategoryInner';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/details" element={<Product />} />
           <Route path="/projectdetails" element={<ProjectDetails />} />
+          <Route path="/faqs" element={<FAQs />} />
+          <Route path="/category" element={<CategoryInner />} />
         </Routes>
       </Layout>
     </div>

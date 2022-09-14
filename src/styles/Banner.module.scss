@@ -1,0 +1,41 @@
+.wrapper {
+    position: relative;
+
+    img {
+        width: 100%;
+    }
+}
+
+.content {
+    position: absolute;
+    width: 40%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(50, 48, 49, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 2.4rem;
+
+    h2,
+    p {
+        text-align: left;
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    p {
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        color: #ffffff;
+    }
+
+    h2 {
+        font-weight: 600;
+        font-size: 5rem;
+        line-height: 6.1rem;
+        color: #ffffff;
+    }
+}

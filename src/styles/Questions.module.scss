@@ -1,0 +1,43 @@
+@import '../App.scss';
+
+.wrapper {
+    padding: 1.8rem;
+    background-color: $grey;
+    border-bottom: 1px solid #ffffff;
+}
+
+.question {
+    display: flex;
+    align-items: center;
+    column-gap: 3.65rem;
+
+    button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+    }
+
+    img {
+        width: 2.7rem;
+    }
+
+    p {
+        font-weight: 500;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        color: #ffffff
+    }
+}
+
+.answer {
+    p {
+        font-weight: 400;
+        font-size: 1.5rem;
+        line-height: 2.2rem;
+        color: #ffffff;
+    }
+
+    margin: 1rem 8.3rem;
+    padding: 0 1.5rem;
+    border-left: 1.5px solid $yellow;
+}

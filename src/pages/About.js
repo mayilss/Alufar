@@ -3,6 +3,7 @@ import styles from '../styles/About.module.scss';
 import img from '../images/about-1.png';
 import empty from '../images/empty.png';
 import icon from '../icons/about-icon.svg';
+import { SimpleTitle } from '../components/SimpleTitle';
 
 export const About = () => {
     return (
@@ -12,7 +13,7 @@ export const About = () => {
                 <div className="row mt-5">
                     <div className="col-md-6 col-12">
                         <div className={styles.content}>
-                            <h2>Haqqimizda</h2>
+                            <SimpleTitle title='Haqqımızda' />
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                                 Modi reprehenderit eveniet odio nobis, inventore veritatis,
@@ -29,7 +30,7 @@ export const About = () => {
                     </div>
                     <div className="col-md-6 col-12">
                         <div className={styles.content}>
-                            <h2>Catdirilma</h2>
+                            <SimpleTitle title='Çatdırılma' />
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                                 Modi reprehenderit eveniet odio nobis, inventore veritatis,
@@ -40,7 +41,7 @@ export const About = () => {
                     </div>
                 </div>
                 <div className={styles.bottom}>
-                    <h2>Bizim ustunluklerimiz</h2>
+                    <SimpleTitle title='Bizim üstünlüklərimiz' />
                     <div className="row gy-4 pb-5">
                         <div className="col-md-3 col-sm-6 col-12">
                             <div className={styles.bottomItem}>

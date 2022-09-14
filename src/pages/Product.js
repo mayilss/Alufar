@@ -1,4 +1,6 @@
 import { Button } from '../components/Button';
+import { SimpleTitle } from '../components/SimpleTitle';
+import { ProjectCard } from '../components/ProjectCard';
 
 import styles from '../styles/Product.module.scss';
 
@@ -18,7 +20,7 @@ export const Product = () => {
                         </div>
                         <div className="col-sm-7 col-12">
                             <div className={styles.contentHolder}>
-                                <h2>F 50</h2>
+                                <SimpleTitle title='F 50' />
                                 <p>
                                     • Dekoratif kapak alternatifleri, standart ve özel açılara uygun özel profiller ile dikkat çekici estetige sahip cepheler tasarlanabilir, <br />
                                     • Drenaj (Kondens) kanalı sayesinde maksimum hava ve su tahliye performansı,<br />
@@ -34,31 +36,31 @@ export const Product = () => {
                     </div>
                 </div>
                 <div className={styles.similar}>
-                    <h2>Oxşar məhsullar</h2>
+                    <SimpleTitle title='Oxşar məhsullar' />
                     <div className="row">
                         <div className="col-md-3 col-6">
-                            <div className={styles.similarItem}>
-                                <img src={empty} alt="" />
-                                <h4>Lorem, ipsum.</h4>
-                            </div>
+                            <ProjectCard
+                                img={empty}
+                                title='Lorem ipsum'
+                            />
                         </div>
                         <div className="col-md-3 col-6">
-                            <div className={styles.similarItem}>
-                                <img src={empty} alt="" />
-                                <h4>Lorem, ipsum.</h4>
-                            </div>
+                            <ProjectCard
+                                img={empty}
+                                title='Lorem ipsum'
+                            />
                         </div>
                         <div className="col-md-3 col-6">
-                            <div className={styles.similarItem}>
-                                <img src={empty} alt="" />
-                                <h4>Lorem, ipsum.</h4>
-                            </div>
+                            <ProjectCard
+                                img={empty}
+                                title='Lorem ipsum'
+                            />
                         </div>
                         <div className="col-md-3 col-6">
-                            <div className={styles.similarItem}>
-                                <img src={empty} alt="" />
-                                <h4>Lorem, ipsum.</h4>
-                            </div>
+                            <ProjectCard
+                                img={empty}
+                                title='Lorem ipsum'
+                            />
                         </div>
                     </div>
                 </div>

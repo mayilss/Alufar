@@ -2,6 +2,7 @@ import styles from '../styles/Manufacturing.module.scss';
 
 import empty from '../images/empty.png'
 import { useState } from 'react';
+import { SimpleTitle } from '../components/SimpleTitle';
 
 export const Manufacturing = () => {
 
@@ -24,7 +25,7 @@ export const Manufacturing = () => {
                     {isActive ? (
                         <div className={styles.tab}>
                             <img src={empty} alt="emp" />
-                            <h2>Elektrostatik boya xidmeti</h2>
+                            <SimpleTitle title='Elektrostatik boya xidməti' />
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                                 Facere ipsum hic reiciendis eius sapiente id nihil perferendis
                                 repellendus quis quia repellat officia pariatur libero,
@@ -33,7 +34,7 @@ export const Manufacturing = () => {
                     ) : (
                         <div className={styles.tab}>
                             <img src={empty} alt="emp" />
-                            <h2>Alüminium profil istehsal zavodu</h2>
+                            <SimpleTitle title='Alüminium profil istehsal zavodu' />
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                                 Facere ipsum hic reiciendis eius sapiente id nihil perferendis
                                 repellendus quis quia repellat officia pariatur libero,

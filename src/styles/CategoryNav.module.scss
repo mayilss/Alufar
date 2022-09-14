@@ -1,0 +1,24 @@
+@import '../App.scss';
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 2rem;
+    margin: 6.4rem 0;
+
+    button {
+        background-color: transparent;
+        border: none;
+        font-weight: 500;
+        font-size: 1.6rem;
+        line-height: 2rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+.active{
+    background-color: $grey !important;
+    color: #ffffff;
+}

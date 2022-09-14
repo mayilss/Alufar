@@ -4,6 +4,7 @@ import styles from '../styles/Title.module.scss';
 import { Button } from './Button';
 
 export const Title = ({ content, legend, button, isWhite }) => {
+
     return (
         <div className={isWhite ? styles.titleW : styles.title}>
             <Link to='/'>
