@@ -11,7 +11,9 @@
         margin-bottom: 2rem;
     }
 
-    img {
-        width: 100%;
+    img{
+        height: 27.4rem;
+        overflow: hidden;
+        object-fit: cover;
     }
 }

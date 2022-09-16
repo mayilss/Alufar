@@ -41,10 +41,6 @@ export const About = () => {
         return { __html: body };
     };
 
-    useEffect(() => {
-        console.log(delivery);
-    }, [delivery]);
-
     return (
         <div className={styles.wrapper}>
             <img src={empty} alt="video" width="100%" />

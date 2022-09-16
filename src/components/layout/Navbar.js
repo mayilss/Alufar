@@ -1,13 +1,32 @@
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+
 import styles from '../../styles/Navbar.module.scss';
 
-import logo from '../../icons/logo.svg'
-import arrow from '../../icons/arrow-down.svg'
-import empty from '../../images/empty2.png'
+import logo from '../../icons/logo.svg';
 
 import { Link } from 'react-router-dom';
+import { NavItem } from '../NavItem';
 
 
 const Navbar = () => {
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const res = await axios(
+                    process.env.REACT_APP_API_URL + "/api/categories?lang=az"
+                );
+                setCategories(res.data.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchCategories();
+    }, []);
+
     return (
         <nav className={styles.wrapper}>
             <div className="container">
@@ -19,64 +38,28 @@ const Navbar = () => {
                     </Link>
                     <div className={styles.nav}>
                         <ul>
-                            <li className={styles.navItem}>
-                                Alüminium sistemlər
-                                <img alt='arrow' src={arrow} />
-                                <div className={styles.dropdownContent}>
-                                    <div className={styles.dropdownItem}>
-                                        <img src={empty} alt="nav" />
-                                    </div>
-                                    <div className={styles.dropdownItem}>
-                                        <h4>Memarlıq sistemləri</h4>
-                                        <ul>
-                                            <li>Lorem, ipsum.</li>
-                                            <li>Lorem, ipsum.</li>
-                                            <li>Lorem, ipsum.</li>
-                                            <li>Lorem, ipsum.</li>
-                                            <li>Lorem, ipsum.</li>
-                                            <li>Lorem, ipsum.</li>
-                                            <li>Lorem, ipsum.</li>
-                                            <li>Lorem, ipsum.</li>
-                                        </ul>
-                                    </div>
-                                    <div className={styles.dropdownItem}>
-                                        <h4>Mebel sistemləri</h4>
-                                        <ul>
-                                            <li>Lorem, ipsum.</li>
-                                            <li>Lorem, ipsum.</li>
-                                        </ul>
-                                    </div>
-                                    <div className={styles.dropdownItem}>
-                                        <h4>Sənaye profilləri</h4>
-                                    </div>
-                                    <div className={styles.dropdownItem}>
-                                        <h4>Digər Sistemlər</h4>
-                                        <ul>
-                                            <li>Lorem, ipsum.</li>
-                                            <li>Lorem, ipsum.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className={styles.navItem}>
-                                İstehsalat
-                                <img alt='arrow' src={arrow} />
-                                <div className={styles.dropdownContent} style={{width: '60rem'}}>
-                                    <div className={styles.dropdownItem}>
-                                        <img src={empty} alt="nav" />
-                                    </div>
-                                    <div className={styles.dropdownItem}>
-                                        <h4>Memarlıq sistemləri</h4>
-                                    </div>
-                                    <div className={styles.dropdownItem}>
-                                        <h4>Sənaye profilləri</h4>
-                                    </div>
-                                </div>
-                            </li>
-                            <Link to='projects'><li className={styles.navItem}>Proyektlər</li></Link>
-                            <Link to='about'><li className={styles.navItem}>Haqqımızda</li></Link>
-                            <Link to='faqs'><li className={styles.navItem}>FAQ</li></Link>
-                            <Link to='contact'><li className={styles.navItem}>Əlaqə</li></Link>
+                            {categories.map((item) => {
+                                return (
+                                    <Link key={item.id} to='/'>
+                                        <NavItem
+                                            title={item.name}
+                                            slug={item.slug}
+                                            image={item.image} />
+                                    </Link>
+                                )
+                            })}
+                            <Link to='projects'>
+                                <NavItem title='Proyektlər' />
+                            </Link>
+                            <Link to='about'>
+                                <NavItem title='Haqqımızda' />
+                            </Link>
+                            <Link to='faqs'>
+                                <NavItem title='FAQ' />
+                            </Link>
+                            <Link to='contact'>
+                                <NavItem title='Əlaqə' />
+                            </Link>
                         </ul>
                     </div>
                 </div>
