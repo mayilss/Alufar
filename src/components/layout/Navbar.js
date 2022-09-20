@@ -1,31 +1,56 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import axios from "axios";
+import { getCategories } from "../../api/alufarApi";
+import { useQuery } from "react-query";
+
+import { Link } from 'react-router-dom';
+import { NavItem } from '../NavItem';
 
 import styles from '../../styles/Navbar.module.scss';
 
 import logo from '../../icons/logo.svg';
 
-import { Link } from 'react-router-dom';
-import { NavItem } from '../NavItem';
-
-
 const Navbar = () => {
-    const [categories, setCategories] = useState([]);
+    // const [categories, setCategories] = useState([]);
 
-    useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const res = await axios(
-                    process.env.REACT_APP_API_URL + "/api/categories?lang=az"
+    const {
+        isLoading,
+        isError,
+        error,
+        data: categories
+    } = useQuery('categories', getCategories);
+
+    let content;
+    if (isLoading) {
+        content = null;
+    } else if (isError) {
+        content = <p>{error.message}</p>
+    } else {
+        content = (
+            categories.data.map((item) => {
+                return (
+                    <Link key={item.id} to='/'>
+                        <NavItem
+                            title={item.name}
+                            slug={item.slug}
+                            image={item.image} />
+                    </Link>
                 );
-                setCategories(res.data.data);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchCategories();
-    }, []);
+            })
+        )
+    }
+
+    // useEffect(() => {
+    //     const fetchCategories = async () => {
+    //         try {
+    //             const res = await axios(
+    //                 process.env.REACT_APP_API_URL + "/api/categories?lang=az"
+    //             );
+    //             setCategories(res.data.data);
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     };
+    //     fetchCategories();
+    // });
 
     return (
         <nav className={styles.wrapper}>
@@ -38,7 +63,7 @@ const Navbar = () => {
                     </Link>
                     <div className={styles.nav}>
                         <ul>
-                            {categories.map((item) => {
+                            {/* {categories.map((item) => {
                                 return (
                                     <Link key={item.id} to='/'>
                                         <NavItem
@@ -47,7 +72,8 @@ const Navbar = () => {
                                             image={item.image} />
                                     </Link>
                                 )
-                            })}
+                            })} */}
+                            {content}
                             <Link to='projects'>
                                 <NavItem title='Proyektlər' />
                             </Link>

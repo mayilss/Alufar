@@ -7,17 +7,17 @@ export const HomeAlSys = () => {
         <div className="container my-5">
             <div className={styles.wrapper}>
                 <Title content="Alüminium sistemlər" />
-                <div className="row py-4">
-                    <div className="col-3">
+                <div className="row py-4 gy-4">
+                    <div className="col-6 col-md-3">
                         <AlSysCard />
                     </div>
-                    <div className="col-3">
+                    <div className="col-6 col-md-3">
                         <AlSysCard />
                     </div>
-                    <div className="col-3">
+                    <div className="col-6 col-md-3">
                         <AlSysCard />
                     </div>
-                    <div className="col-3">
+                    <div className="col-6 col-md-3">
                         <AlSysCard />
                     </div>
                 </div>

@@ -14,22 +14,25 @@ import { Product } from './pages/Product';
 import { ProjectDetails } from './pages/ProjectDetails';
 import { FAQs } from './pages/FAQs';
 import { CategoryInner } from './pages/CategoryInner';
+import { ProjectProvider } from './contexts/ProjectContext';
 
 function App() {
   return (
     <div className="App">
       <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/manufacturing" element={<Manufacturing />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/details" element={<Product />} />
-          <Route path="/projectdetails" element={<ProjectDetails />} />
-          <Route path="/faqs" element={<FAQs />} />
-          <Route path="/category" element={<CategoryInner />} />
-        </Routes>
+        <ProjectProvider>
+          <Routes>
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/projectdetails" element={<ProjectDetails />} />
+            <Route path="/manufacturing" element={<Manufacturing />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/details" element={<Product />} />
+            <Route path="/faqs" element={<FAQs />} />
+            <Route path="/category" element={<CategoryInner />} />
+          </Routes>
+        </ProjectProvider>
       </Layout>
     </div>
   );

@@ -4,24 +4,31 @@ import axios from "axios";
 
 import styles from '../styles/NavItem.module.scss';
 
-import arrow from '../icons/arrow-down.svg'
+import arrow from '../icons/arrow-down.svg';
 
 export const NavItem = ({ title, slug, image }) => {
     const [subCategories, setSubCategories] = useState([]);
 
     useEffect(() => {
+        const cancelToken = axios.CancelToken.source();
         const fetchSubCategories = async () => {
-            try {
-                const res = await axios(
-                    process.env.REACT_APP_API_URL + `/api/categories/${slug}?lang=az`
-                );
+            await axios(
+                process.env.REACT_APP_API_URL + `/api/categories/${slug}?lang=az`, { cancelToken: cancelToken.token }
+            ).then((res) => {
                 setSubCategories(res.data.data);
-            } catch (error) {
-                console.log(error);
+            }).catch(err => {
+                if (axios.isCancel(err)) {
+                    console.log(err)
+                }
             }
+            );
+
         };
         fetchSubCategories();
-    });
+        return () => {
+            cancelToken.cancel()
+        }
+    }, [slug]);
 
     return (
         <li className={styles.navItem}>
@@ -38,22 +45,11 @@ export const NavItem = ({ title, slug, image }) => {
                     </div>)}
                 {subCategories && subCategories.map((item) => {
                     return (
-                        <div className={styles.dropdownItem}>
+                        <div key={item.id} className={styles.dropdownItem}>
                             <h4>{item.name}</h4>
-                            {/* <ul>
-                                            <li>Lorem, ipsum.</li>
-                                            <li>Lorem, ipsum.</li>
-                                            <li>Lorem, ipsum.</li>
-                                            <li>Lorem, ipsum.</li>
-                                            <li>Lorem, ipsum.</li>
-                                            <li>Lorem, ipsum.</li>
-                                            <li>Lorem, ipsum.</li>
-                                            <li>Lorem, ipsum.</li>
-                                        </ul> */}
                         </div>
                     )
                 })}
-
             </div>)}
         </li>
     );

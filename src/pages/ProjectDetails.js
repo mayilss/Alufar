@@ -2,51 +2,96 @@ import '../styles/ProjectDetails.scss';
 
 import Masonry from "react-masonry-css";
 
-import empty from '../images/empty.png';
-import asan1 from '../images/asan1.png';
-import asan2 from '../images/asan2.png';
-import asan3 from '../images/asan3.png';
-import asan4 from '../images/asan4.png';
 import { Button } from '../components/Button';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from "axios";
+import { useContext } from 'react';
+import { ProjectContext } from '../contexts/ProjectContext';
 
 export const ProjectDetails = () => {
+    const [project, setProject] = useState({});
+    const [gallery, setGallery] = useState([]);
+    const [slugState, setSlugState] = useState('');
+    const { slugChanged ,handleNextProject } = useContext(ProjectContext);
+
+    useEffect(() => {
+        const cancelToken = axios.CancelToken.source();
+        const fetchProject = async () => {
+            await axios(
+                process.env.REACT_APP_API_URL + `/api/projects/${slugState}?lang=az`
+            ).then((res) => {
+                setProject(res.data.data);
+                const arr = project.gallery
+                const sliced = arr.slice(1, arr.length - 1);
+                const splitted = sliced.split(',');
+                const mapped = splitted.map((el, index) => {
+                    const slicedEl = el.slice(1, el.length - 1);
+                    return (
+                        <img key={index} width={"100%"} alt="gallery" src={
+                            process.env.REACT_APP_API_URL +
+                            "/storage/" +
+                            slicedEl
+                        } />
+                    )
+                })
+                setGallery(mapped);
+            }).catch(err => {
+                console.log(err)
+                if (axios.isCancel(err)) {
+                    console.log(err)
+                }
+            }
+            );
+        };
+        
+        fetchProject();
+        return () => {
+            cancelToken.cancel()
+        }
+    }, [slugChanged, slugState, project.gallery, gallery.length]);
+    useEffect(()=>{
+        setSlugState(sessionStorage.getItem('slug'));
+    }, [slugChanged])
+
+    const createMarkup = (body) => {
+        return { __html: body };
+    };
+
     return (
         <div className="pd-wrapper">
             <div className='pd-banner'>
-                <img src={empty} alt="pd banner" />
+                <img src={
+                    process.env.REACT_APP_API_URL +
+                    "/storage/" +
+                    project.image
+                } alt="pd banner" />
                 <div className='pd-contentWrapper'>
                     <div className="pd-content">
-                        <h2>Asan Xidmət</h2>
+                        <h2>{project.title}</h2>
                         <div className='pd-text'>
+                            <div dangerouslySetInnerHTML={createMarkup(
+                                project.description
+                            )} />
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Voluptatum, culpa. Dolorem, obcaecati facilis rem saepe
-                                sapiente magnam deserunt tempore consequatur quaerat possimus
-                                ullam, rerum quisquam harum maxime asperiores voluptatem doloribus.
-                            </p>
-                            <p>
-                                Tarix: 12 Aprel 2020 <br />
-                                Müştəri: Asan xidmət
+                                {project.project_date}
                             </p>
                         </div>
                     </div>
                     <div className="pd-btnHolder">
-                        <Button content='Sonraki proyekt' />
+                        <Button content='Sonraki proyekt' click={handleNextProject} />
                     </div>
                 </div>
             </div>
             <div className="container">
-                <Masonry
-                    breakpointCols={2}
-                    className="my-masonry-grid my-4"
-                    columnClassName="my-masonry-grid_column">
-                    {[
-                        <img width={"100%"} alt="gallery" src={asan1} />,
-                        <img width={"100%"} alt="gallery" src={asan2} />,
-                        <img width={"100%"} alt="gallery" src={asan3} />,
-                        <img width={"100%"} alt="gallery" src={asan4} />,
-                    ]}
-                </Masonry>
+                {project.gallery !== '[]' ? (
+                    <Masonry
+                        breakpointCols={2}
+                        className="my-masonry-grid my-4"
+                        columnClassName="my-masonry-grid_column">
+                        {gallery}
+                    </Masonry>
+                ) : null}
             </div>
         </div>
     );

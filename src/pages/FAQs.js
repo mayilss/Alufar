@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useQuery } from "react-query";
+import { getFaqs } from "../api/alufarApi";
 
 import { Questions } from "../components/Questions";
 import { Banner } from "../components/Banner";
@@ -9,21 +9,31 @@ import styles from "../styles/FAQs.module.scss";
 import bg from "../images/faqs-bg.png";
 
 export const FAQs = () => {
-    const [questions, setQuestions] = useState([]);
+    const {
+        isLoading,
+        isError,
+        error,
+        data: faqs
+    } = useQuery('faqs', getFaqs);
 
-    useEffect(() => {
-        const fetchQuestions = async () => {
-            try {
-                const res = await axios(
-                    process.env.REACT_APP_API_URL + "/api/faqs?lang=az"
+    let content;
+    if(isLoading){
+        content = null;
+    } else if(isError){
+        content = <p>{error.message}</p>
+    } else {
+        content = (
+            faqs.data.map((item) => {
+                return (
+                    <Questions
+                        key={item.id}
+                        question={item.question}
+                        answer={item.answer}
+                    />
                 );
-                setQuestions(res.data.data);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchQuestions();
-    }, []);
+            })
+        )
+    }
 
     return (
         <div className={styles.wrapper}>
@@ -35,15 +45,7 @@ export const FAQs = () => {
                 və ətraflı cavab tap."
             />
             <div className={styles.questionHolder}>
-                {questions.map((item) => {
-                    return (
-                        <Questions
-                            key={item.id}
-                            question={item.question}
-                            answer={item.answer}
-                        />
-                    );
-                })}
+                {content}
             </div>
         </div>
     );

@@ -57,24 +57,24 @@ export const About = () => {
                         </div>
                     </div>
                     <div className={`col-md-6 col-12 ${styles.contentHolder}`}>
-                        <img
+                        {about.image && <img
                             src={
                                 process.env.REACT_APP_API_URL +
                                 "/storage/" +
                                 about.image
                             }
                             alt="about"
-                        />
+                        />}
                     </div>
                     <div className={`col-md-6 col-12 ${styles.contentHolder}`}>
-                        <img
+                        {delivery.image && <img
                             src={
                                 process.env.REACT_APP_API_URL +
                                 "/storage/" +
                                 delivery.image
                             }
                             alt="delivery"
-                        />
+                        />}
                     </div>
                     <div className="col-md-6 col-12">
                         <div className={styles.content}>
