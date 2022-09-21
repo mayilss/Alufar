@@ -1,5 +1,5 @@
-import HeaderTop from "./HeaderTop";
-import Navbar from "./Navbar";
+import { HeaderTop } from "./HeaderTop";
+import { Navbar } from "./Navbar";
 
 const Header = () => {
     return (
@@ -8,6 +8,6 @@ const Header = () => {
             <Navbar />
         </header>
     );
-}
+};
 
 export default Header;

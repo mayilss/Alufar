@@ -1,5 +1,9 @@
+@import "../App.scss";
+
 .wrapper {
-    background-color: #FFD600;
+    background-color: #ffd600;
+    position: relative;
+    overflow: hidden;
 
     .content {
         display: flex;
@@ -13,11 +17,23 @@
     img {
         width: 19.4rem;
         height: 3.5rem;
+        margin: 2rem 0;
     }
 }
 
 .nav {
     display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    button {
+        background-color: transparent;
+        border: none;
+        display: none;
+        img {
+            width: 3rem;
+        }
+    }
 
     ul {
         display: flex;
@@ -28,11 +44,37 @@
         padding: 0;
     }
 }
-
-
+.mobileMenu {
+    position: absolute;
+    top: 0;
+    right: -300px;
+    z-index: 105;
+    background-color: $grey;
+    width: 300px;
+    height: 100vh;
+    transition: 0.3s ease;
+    .close {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        button {
+            background-color: transparent;
+            border: none;
+            padding: 10px 10px 0 0;
+            img {
+                width: 18px;
+            }
+        }
+    }
+}
 
 @media screen and (max-width: 768px) {
     .nav {
-        display: none;
+        ul {
+            display: none;
+        }
+        button {
+            display: block;
+        }
     }
 }

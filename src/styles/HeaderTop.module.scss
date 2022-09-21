@@ -1,4 +1,4 @@
-@import '../App.scss';
+@import "../App.scss";
 
 .wrapper {
     width: 100%;
@@ -18,32 +18,12 @@
     margin-right: 15rem;
 }
 
-.delivery {
-    display: flex;
-    align-items: center;
-    column-gap: 8px;
-
-    img{
-        width: 2.6rem;
-        height: 1.6rem;
-    }
-
-    p {
-        color: #ffffff;
-        margin: 0;
-        padding: 0;
-        font-weight: 300;
-        font-size: 1.4rem;
-        line-height: 1.6rem;
-    }
-}
-
 .customer {
     display: flex;
     align-items: center;
     column-gap: 8px;
 
-    img{
+    img {
         width: 1.6rem;
         height: 1.6rem;
     }
@@ -53,11 +33,11 @@
         margin: 0;
         padding: 0;
         font-weight: 300;
-        font-size: 1.4rem;
-        line-height: 1.6rem;
+        font-size: 1.6rem;
+        line-height: 1.8rem;
 
         span {
-            color: #FFD600;
+            color: #ffd600;
         }
     }
 }
@@ -67,27 +47,27 @@
     align-items: center;
     column-gap: 2.2rem;
 
-    button{
+    button {
         background-color: transparent;
         border: none;
         outline: none;
     }
 
-    input{
+    input {
         border: none;
         background-color: transparent;
         border-bottom: 1px solid $yellow;
         width: 50rem;
         color: #ffffff;
         font-weight: 300;
-        font-size: 1.4rem;
-        line-height: 1.6rem;
-        &::placeholder{
+        font-size: 1.6rem;
+        line-height: 1.8rem;
+        &::placeholder {
             color: #ffffff;
         }
     }
 
-    img{
+    img {
         width: 1.6rem;
         height: 1.6rem;
     }
@@ -101,8 +81,8 @@
         padding: 0;
         border-bottom: 2px solid #323031;
 
-        &:hover{
-            border-bottom: 2px solid #FFD600;
+        &:hover {
+            border-bottom: 2px solid #ffd600;
         }
     }
 }

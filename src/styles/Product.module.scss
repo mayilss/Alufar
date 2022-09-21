@@ -1,6 +1,6 @@
-@import '../App.scss';
+@import "../App.scss";
 
-.page{
+.page {
     background-color: $bg;
     padding: 5rem 0;
 }
@@ -12,7 +12,7 @@
     width: 100%;
     border: 1px solid $grey;
     padding: 1rem;
-    img{
+    img {
         width: 100%;
         object-fit: cover;
     }
@@ -24,6 +24,7 @@
     padding-left: 2.5rem;
     row-gap: 3.2rem;
     position: sticky;
+    margin-top: 1.6rem;
     top: 0;
 
     p {
@@ -34,7 +35,7 @@
 }
 
 .btnHolder {
-    width: 19rem;
+    width: 25rem;
 }
 
 .similar {
@@ -47,7 +48,7 @@
     }
 }
 
-.similarItem{
+.similarItem {
     display: flex;
     flex-direction: column;
     row-gap: 1.6rem;
