@@ -95,7 +95,9 @@ export const About = () => {
                             />
                         )}
                     </div>
-                    <div className={`col-md-6 col-12 ${styles.contentHolder}`}>
+                    <div
+                        className={`order-2 order-md-1 col-md-6 col-12 ${styles.contentHolder}`}
+                    >
                         {delivery.image && (
                             <img
                                 src={
@@ -107,7 +109,7 @@ export const About = () => {
                             />
                         )}
                     </div>
-                    <div className="col-md-6 col-12">
+                    <div className="order-1 order-md-2 col-md-6 col-12">
                         <div className={styles.content}>
                             <SimpleTitle title={delivery.title} />
                             <div
@@ -127,7 +129,7 @@ export const About = () => {
                                     key={item.title}
                                     className={
                                         bottomContent[0].title === item.title
-                                            ? "col-md-3 col-6 mt-4"
+                                            ? "col-md-3 col-6 mt-5"
                                             : "col-md-3 col-6"
                                     }
                                 >

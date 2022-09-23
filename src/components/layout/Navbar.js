@@ -9,12 +9,10 @@ import styles from "../../styles/Navbar.module.scss";
 import logo from "../../icons/logo.svg";
 import mobile from "../../icons/mobile-menu.svg";
 import x from "../../icons/x.svg";
-import { useRef } from "react";
+import { useState } from "react";
 
 export const Navbar = () => {
-    const menu = useRef();
-    const wrapper = useRef();
-
+    const [mobileActive, setMobileActive] = useState(false);
     const {
         isLoading,
         isError,
@@ -41,17 +39,12 @@ export const Navbar = () => {
         });
     }
 
-    const open = () => {
-        menu.current.style.right = "0";
-        wrapper.current.style.overflow = "visible";
-    };
-    const close = () => {
-        wrapper.current.style.overflow = "hidden";
-        menu.current.style.right = "-300px";
+    const toggleMobileNav = () => {
+        setMobileActive(!mobileActive);
     };
 
     return (
-        <nav ref={wrapper} className={styles.wrapper}>
+        <nav className={styles.wrapper}>
             <div className="container">
                 <div className={styles.content}>
                     <Link to="/">
@@ -62,7 +55,7 @@ export const Navbar = () => {
                     <div className={styles.nav}>
                         <button
                             onClick={() => {
-                                open();
+                                toggleMobileNav();
                             }}
                         >
                             <img src={mobile} alt="menu" />
@@ -85,11 +78,17 @@ export const Navbar = () => {
                     </div>
                 </div>
             </div>
-            <div ref={menu} className={styles.mobileMenu}>
+            <div
+                className={
+                    mobileActive
+                        ? `${styles.mobileMenuActive} ${styles.mobileMenu}`
+                        : styles.mobileMenu
+                }
+            >
                 <div className={styles.close}>
                     <button
                         onClick={() => {
-                            close();
+                            toggleMobileNav();
                         }}
                     >
                         <img src={x} alt="close" />

@@ -3,7 +3,6 @@
 .wrapper {
     background-color: #ffd600;
     position: relative;
-    overflow: hidden;
 
     .content {
         display: flex;
@@ -47,12 +46,13 @@
 .mobileMenu {
     position: absolute;
     top: 0;
-    right: -300px;
+    right: 0px;
     z-index: 105;
     background-color: $grey;
     width: 300px;
     height: 100vh;
     transition: 0.3s ease;
+    display: none;
     .close {
         display: flex;
         justify-content: flex-end;
@@ -66,6 +66,9 @@
             }
         }
     }
+}
+.mobileMenuActive {
+    display: block;
 }
 
 @media screen and (max-width: 768px) {

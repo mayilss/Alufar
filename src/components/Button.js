@@ -1,7 +1,18 @@
-import styles from '../styles/Button.module.scss';
+import styles from "../styles/Button.module.scss";
 
-export const Button = ({content, click, args}) => {
+export const Button = ({ content, click, args }) => {
     return (
-        <button onClick={()=>{click(args)}} className={styles.button}>{content}</button>
+        <button
+            onClick={
+                click
+                    ? () => {
+                          click(args);
+                      }
+                    : console.log(null)
+            }
+            className={styles.button}
+        >
+            {content}
+        </button>
     );
-}
+};
