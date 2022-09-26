@@ -2,21 +2,27 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 
+import { DropdownSubItem } from "./DropdownSubItem";
 import styles from "../styles/NavItem.module.scss";
 
 import arrow from "../icons/arrow-down.svg";
 import arrowW from "../icons/arrow-down-w.svg";
+import empty from "../images/empty-rect.png";
+import { useContext } from "react";
+import { LanguageContext } from "../contexts/LanguageContext";
 
-export const NavItem = ({ title, slug, image }) => {
+export const NavItem = ({ title, slug }) => {
+    const { lang } = useContext(LanguageContext);
     const [subCategories, setSubCategories] = useState([]);
     const [subActive, setSubActive] = useState(false);
+    const [img, setImg] = useState(empty);
 
     useEffect(() => {
         const cancelToken = axios.CancelToken.source();
         const fetchSubCategories = async () => {
             await axios(
                 process.env.REACT_APP_API_URL +
-                    `/api/categories/${slug}?lang=az`,
+                    `/api/categories/${slug}?lang=${lang}`,
                 { cancelToken: cancelToken.token }
             )
                 .then((res) => {
@@ -32,7 +38,7 @@ export const NavItem = ({ title, slug, image }) => {
         return () => {
             cancelToken.cancel();
         };
-    }, [slug]);
+    }, [slug, lang]);
 
     const handleSubs = () => {
         setSubActive(!subActive);
@@ -40,39 +46,53 @@ export const NavItem = ({ title, slug, image }) => {
 
     return (
         <>
-            <li className={styles.navItem}>
+            <li
+                onClick={() => {
+                    handleSubs();
+                }}
+                className={styles.navItem}
+            >
                 {title}
                 {subCategories.length !== 0 ? (
                     <img
-                        onClick={() => {
-                            handleSubs();
-                        }}
                         alt="arrow"
                         src={window.innerWidth > 768 ? arrow : arrowW}
                     />
                 ) : null}
                 {subCategories.length !== 0 ? (
                     <div className={styles.dropdownContent}>
-                        {image ? (
-                            <div className={styles.dropdownItem}>
-                                <img
-                                    src={
-                                        process.env.REACT_APP_API_URL +
-                                        "/storage/" +
-                                        image
-                                    }
-                                    alt="nav"
-                                />
-                            </div>
-                        ) : null}
+                        <div className={styles.dropdownItem}>
+                            <img src={img} alt="nav" />
+                        </div>
                         {subCategories.length !== 0 && window.innerWidth > 768
                             ? subCategories.map((item) => {
                                   return (
                                       <div
                                           key={item.id}
                                           className={styles.dropdownItem}
+                                          onMouseEnter={() => {
+                                              if (item.image) {
+                                                  setImg(
+                                                      process.env
+                                                          .REACT_APP_API_URL +
+                                                          "/storage/" +
+                                                          item.image
+                                                  );
+                                              } else {
+                                                  setImg(empty);
+                                              }
+                                          }}
+                                          onMouseLeave={() => {
+                                              setImg(empty);
+                                          }}
                                       >
                                           <h4>{item.name}</h4>
+                                          <ul>
+                                              <DropdownSubItem
+                                                  key={item.id}
+                                                  slug={item.slug}
+                                              />
+                                          </ul>
                                       </div>
                                   );
                               })
