@@ -11,32 +11,34 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { LanguageContext } from "../../contexts/LanguageContext";
+import { CategoryContext } from "../../contexts/CategoryContext";
 
 export const Navbar = () => {
-    const [categories, setCategories] = useState([]);
+    // const [categories, setCategories] = useState([]);
     const { lang } = useContext(LanguageContext);
+    const { categories } = useContext(CategoryContext);
     const [mobileActive, setMobileActive] = useState(false);
-    useEffect(() => {
-        const cancelToken = axios.CancelToken.source();
-        const fetchCategories = async () => {
-            await axios(
-                process.env.REACT_APP_API_URL + `/api/categories?lang=${lang}`,
-                { cancelToken: cancelToken.token }
-            )
-                .then((res) => {
-                    setCategories(res.data.data);
-                })
-                .catch((err) => {
-                    if (axios.isCancel(err)) {
-                        console.log(err);
-                    }
-                });
-        };
-        fetchCategories();
-        return () => {
-            cancelToken.cancel();
-        };
-    }, [lang]);
+    // useEffect(() => {
+    //     const cancelToken = axios.CancelToken.source();
+    //     const fetchCategories = async () => {
+    //         await axios(
+    //             process.env.REACT_APP_API_URL + `/api/categories?lang=${lang}`,
+    //             { cancelToken: cancelToken.token }
+    //         )
+    //             .then((res) => {
+    //                 setCategories(res.data.data);
+    //             })
+    //             .catch((err) => {
+    //                 if (axios.isCancel(err)) {
+    //                     console.log(err);
+    //                 }
+    //             });
+    //     };
+    //     fetchCategories();
+    //     return () => {
+    //         cancelToken.cancel();
+    //     };
+    // }, [lang]);
     const content = categories.map((item) => {
         return (
             <Link key={item.id} to="/">

@@ -10,9 +10,12 @@ import arrowW from "../icons/arrow-down-w.svg";
 import empty from "../images/empty-rect.png";
 import { useContext } from "react";
 import { LanguageContext } from "../contexts/LanguageContext";
+import { CategoryContext } from "../contexts/CategoryContext";
+import { Link, useNavigate } from "react-router-dom";
 
 export const NavItem = ({ title, slug }) => {
     const { lang } = useContext(LanguageContext);
+    const { getInnerPage } = useContext(CategoryContext);
     const [subCategories, setSubCategories] = useState([]);
     const [subActive, setSubActive] = useState(false);
     const [img, setImg] = useState(empty);
@@ -67,8 +70,12 @@ export const NavItem = ({ title, slug }) => {
                         {subCategories.length !== 0 && window.innerWidth > 768
                             ? subCategories.map((item) => {
                                   return (
-                                      <div
+                                      <Link
+                                          to="/category"
                                           key={item.id}
+                                          onClick={() => {
+                                              getInnerPage(item.slug);
+                                          }}
                                           className={styles.dropdownItem}
                                           onMouseEnter={() => {
                                               if (item.image) {
@@ -93,7 +100,7 @@ export const NavItem = ({ title, slug }) => {
                                                   slug={item.slug}
                                               />
                                           </ul>
-                                      </div>
+                                      </Link>
                                   );
                               })
                             : null}
