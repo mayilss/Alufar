@@ -14,6 +14,7 @@ import bg from "../images/al-sys-banner.png";
 import furniture from "../images/furniture-bg.png";
 import industry from "../images/industry-bg.png";
 import others from "../images/empty.png";
+import { LanguageContext } from "../contexts/LanguageContext";
 
 const bannerContent = [
     {
@@ -46,7 +47,9 @@ export const CategoryInner = () => {
     const [products, setProducts] = useState([]);
     const [category, setCategory] = useState("");
     const [isActive, setIsActive] = useState("");
-    const { slugChanged } = useContext(CategoryContext);
+    const [subCategories, setSubCategories] = useState([]);
+    const { slugChanged, getInnerPage } = useContext(CategoryContext);
+    const { lang } = useContext(LanguageContext);
     useEffect(() => {
         setCategory(sessionStorage.getItem("categorySlug"));
     }, [slugChanged]);
@@ -75,6 +78,27 @@ export const CategoryInner = () => {
             cancelToken.cancel();
         };
     }, [isActive, category]);
+    useEffect(() => {
+        const cancelToken = axios.CancelToken.source();
+        const fetchSubCategories = async () => {
+            await axios(
+                process.env.REACT_APP_API_URL +
+                    `/api/categories/aluminium-systems?lang=${lang}`
+            )
+                .then((res) => {
+                    setSubCategories(res.data.data);
+                })
+                .catch((err) => {
+                    if (axios.isCancel(err)) {
+                        console.log(err);
+                    }
+                });
+        };
+        fetchSubCategories();
+        return () => {
+            cancelToken.cancel();
+        };
+    }, [lang]);
     let item;
     if (category === "architectural-systems-1") {
         item = { ...bannerContent[0] };
@@ -116,15 +140,31 @@ export const CategoryInner = () => {
                     <SimpleTitle title="Digər sistemlər" />
                 </div>
                 <div className="row py-4">
-                    <div className="col-4">
-                        <AlSysCard />
-                    </div>
-                    <div className="col-4">
-                        <AlSysCard />
-                    </div>
-                    <div className="col-4">
-                        <AlSysCard />
-                    </div>
+                    {subCategories.map((item) => {
+                        if (item.slug === category) {
+                            return "";
+                        }
+
+                        return (
+                            <div
+                                onClick={() => {
+                                    getInnerPage(item.slug);
+                                }}
+                                key={item.id}
+                                className="col-4"
+                            >
+                                <AlSysCard
+                                    img={
+                                        process.env.REACT_APP_API_URL +
+                                        "/storage/" +
+                                        item.image
+                                    }
+                                    title={item.name}
+                                    description={item.description}
+                                />
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@ export const BannerVideo = () => {
         <div className={styles.wrapper}>
             <video autoPlay loop muted>
                 <source
-                    src="https://alufar.looptech.az/alufar.mp4"
+                    src={process.env.REACT_APP_API_URL + `/alufar.mp4`}
                     type="video/mp4"
                 ></source>
             </video>

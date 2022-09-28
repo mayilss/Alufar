@@ -31,4 +31,4 @@ jobs:
                     echo "$entry"
                   done
             - name: Deploy with rsync
-              run: rsync --modify-window=1 --update -avz ./build/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/domains/alufar.looptech.az/public
+              run: rsync --modify-window=1 --update -avz ./build/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/domains/alufar.looptech.az/

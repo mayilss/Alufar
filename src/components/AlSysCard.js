@@ -1,14 +1,11 @@
-import styles from '../styles/AlSysCard.module.scss';
+import styles from "../styles/AlSysCard.module.scss";
 
-import cardImg from '../images/al-sys.png'
-
-export const AlSysCard = () => {
-    return ( 
+export const AlSysCard = ({ img, title, description }) => {
+    return (
         <div className={styles.wrapper}>
-            <img src={cardImg} alt="Memarlıq sistemləri" />
-            <h4>Memarlıq sistemləri</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                Aspernatur maxime in sint pariatur rerum.</p>
+            <img src={img} alt="Memarlıq sistemləri" />
+            <h4>{title}</h4>
+            <p>{description}</p>
         </div>
-     );
-}
+    );
+};
