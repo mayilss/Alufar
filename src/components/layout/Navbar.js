@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { NavItem } from "../NavItem";
-import axios from "axios";
+// import axios from "axios";
 
 import styles from "../../styles/Navbar.module.scss";
 
@@ -8,7 +8,7 @@ import logo from "../../icons/logo.svg";
 import mobile from "../../icons/mobile-menu.svg";
 import x from "../../icons/x.svg";
 import { useState } from "react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useContext } from "react";
 import { LanguageContext } from "../../contexts/LanguageContext";
 import { CategoryContext } from "../../contexts/CategoryContext";

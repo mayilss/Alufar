@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-import { useQuery } from "react-query";
-import { getCategories } from "../api/alufarApi";
+// import { useQuery } from "react-query";
+// import { getCategories } from "../api/alufarApi";
 import styles from "../styles/CategoryNav.module.scss";
 import { useContext } from "react";
 import { LanguageContext } from "../contexts/LanguageContext";

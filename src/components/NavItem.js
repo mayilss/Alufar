@@ -11,7 +11,7 @@ import empty from "../images/empty-rect.png";
 import { useContext } from "react";
 import { LanguageContext } from "../contexts/LanguageContext";
 import { CategoryContext } from "../contexts/CategoryContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const NavItem = ({ title, slug }) => {
     const { lang } = useContext(LanguageContext);
