@@ -1,16 +1,13 @@
-import styles from '../styles/Banner.module.scss';
+import styles from "../styles/Banner.module.scss";
 
-
-
-export const Banner = ({ img, title, text }) => {
+export const Banner = ({ item }) => {
     return (
         <div className={styles.wrapper}>
-            <img src={img} alt="background" />
+            <img src={item.img} alt="background" />
             <div className={styles.content}>
-                <h2>{title}</h2>
-                <p>{text}</p>
+                <h2>{item.title}</h2>
+                <p>{item.text}</p>
             </div>
         </div>
     );
-}
-
+};
