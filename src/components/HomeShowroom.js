@@ -1,4 +1,4 @@
-import styles from "../styles/HomeShowroom.module.scss"
+import styles from "../styles/HomeShowroom.module.scss";
 
 import empty from "../images/empty.png";
 
@@ -9,8 +9,16 @@ export const HomeShowroom = () => {
         <div className="container mt-5 pb-5">
             <div className={styles.wrapper}>
                 <Title content="Showroom" />
-                <img src={empty} alt="video" />
+                <video autoPlay loop muted>
+                    <source
+                        src={
+                            process.env.REACT_APP_API_URL +
+                            `/alufar-showroom.mp4`
+                        }
+                        type="video/mp4"
+                    ></source>
+                </video>
             </div>
         </div>
     );
-}
+};

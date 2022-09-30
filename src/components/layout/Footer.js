@@ -1,11 +1,12 @@
-import styles from '../../styles/Footer.module.scss';
+import styles from "../../styles/Footer.module.scss";
 
-import logo from '../../icons/logo-w.svg'
+import logo from "../../icons/logo-w.svg";
 
-import fb from '../../icons/fb.svg'
-import ig from '../../icons/ig.svg'
-import yt from '../../icons/yt.svg'
-import ln from '../../icons/ln.svg'
+import fb from "../../icons/fb.svg";
+import ig from "../../icons/ig.svg";
+import yt from "../../icons/yt.svg";
+import ln from "../../icons/ln.svg";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -14,7 +15,7 @@ const Footer = () => {
                 <div className="row">
                     <div className={styles.content}>
                         <div className={styles.logo}>
-                            <img src={logo} alt='logo' />
+                            <img src={logo} alt="logo" />
                         </div>
                         <div className={styles.inner}>
                             <div className={styles.item}>
@@ -32,22 +33,30 @@ const Footer = () => {
                                 <h4>İstehsalat</h4>
                             </div>
                             <div className={styles.item}>
-                                <h4>Proyektlər</h4>
+                                <h4>
+                                    <Link to="/projects">Proyektlər</Link>
+                                </h4>
                             </div>
                             <div className={styles.item}>
-                                <h4>Haqqımızda</h4>
+                                <h4>
+                                    <Link to="/about">Haqqımızda</Link>
+                                </h4>
                             </div>
                             <div className={styles.item}>
-                                <h4>FAQ</h4>
+                                <h4>
+                                    <Link to="/faqs">FAQ</Link>
+                                </h4>
                             </div>
                             <div className={styles.item}>
-                                <h4>Əlaqə</h4>
+                                <h4>
+                                    <Link to="/contact">Əlaqə</Link>
+                                </h4>
                             </div>
                             <div className={styles.socials}>
-                                <img src={fb} alt='socials' />
-                                <img src={ig} alt='socials' />
-                                <img src={yt} alt='socials' />
-                                <img src={ln} alt='socials' />
+                                <img src={fb} alt="socials" />
+                                <img src={ig} alt="socials" />
+                                <img src={yt} alt="socials" />
+                                <img src={ln} alt="socials" />
                             </div>
                         </div>
                     </div>
@@ -55,6 +64,6 @@ const Footer = () => {
             </div>
         </footer>
     );
-}
+};
 
 export default Footer;

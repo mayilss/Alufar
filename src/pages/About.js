@@ -70,7 +70,12 @@ export const About = () => {
 
     return (
         <main className={styles.wrapper}>
-            <img src={empty} alt="video" width="100%" />
+            <video autoPlay loop muted width="100%">
+                <source
+                    src={process.env.REACT_APP_API_URL + `/alufar-showroom.mp4`}
+                    type="video/mp4"
+                ></source>
+            </video>
             <div className="container">
                 <div className="row mt-5">
                     <div className="col-md-6 col-12">
