@@ -41,9 +41,9 @@ export const Navbar = () => {
     // }, [lang]);
     const content = categories.map((item) => {
         return (
-            <Link key={item.id} to="/">
+            <div key={item.id}>
                 <NavItem title={item.name} slug={item.slug} />
-            </Link>
+            </div>
         );
     });
 

@@ -15,6 +15,8 @@ import furniture from "../images/furniture-bg.png";
 import industry from "../images/industry-bg.png";
 import others from "../images/empty.png";
 import { LanguageContext } from "../contexts/LanguageContext";
+import { useNavigate } from "react-router-dom";
+import { ProductContext } from "../contexts/ProductContext";
 
 const bannerContent = [
     {
@@ -48,8 +50,13 @@ export const CategoryInner = () => {
     const [category, setCategory] = useState("");
     const [isActive, setIsActive] = useState("");
     const [subCategories, setSubCategories] = useState([]);
+
     const { slugChanged, getInnerPage } = useContext(CategoryContext);
     const { lang } = useContext(LanguageContext);
+    const { getProductInner } = useContext(ProductContext);
+
+    const navigate = useNavigate();
+
     useEffect(() => {
         setCategory(sessionStorage.getItem("categorySlug"));
     }, [slugChanged]);
@@ -60,7 +67,8 @@ export const CategoryInner = () => {
                 process.env.REACT_APP_API_URL +
                     `/api/products?lang=az&${
                         isActive === ""
-                            ? "category=" + category + "&"
+                            ? // ? "category=" + category + "&"
+                              ""
                             : "category=" + isActive + "&"
                     }item=4`
             )
@@ -83,7 +91,7 @@ export const CategoryInner = () => {
         const fetchSubCategories = async () => {
             await axios(
                 process.env.REACT_APP_API_URL +
-                    `/api/categories/aluminium-systems?lang=${lang}`
+                    `/api/categories/aluminium-systems-1?lang=${lang}`
             )
                 .then((res) => {
                     setSubCategories(res.data.data);
@@ -102,15 +110,16 @@ export const CategoryInner = () => {
     let item;
     if (category === "architectural-systems-1") {
         item = { ...bannerContent[0] };
-    } else if (category === "furniture-systems") {
+    } else if (category === "furniture-systems-1") {
         item = { ...bannerContent[1] };
-    } else if (category === "industry-profiles") {
+    } else if (category === "industry-profiles-1") {
         item = { ...bannerContent[2] };
-    } else if (category === "other-systems") {
+    } else if (category === "other-systems-1") {
         item = { ...bannerContent[3] };
     }
+
     return (
-        <div>
+        <main>
             <Banner item={{ ...item }} />
             <div className="container">
                 <CategoryNav subSlug={[isActive, setIsActive]} />
@@ -118,6 +127,10 @@ export const CategoryInner = () => {
                     {products.map((item) => {
                         return (
                             <div
+                                onClick={() => {
+                                    getProductInner(item.slug);
+                                    navigate("/details");
+                                }}
                                 key={item.id}
                                 className="col-md-3 col-sm-6 col-12"
                             >
@@ -139,7 +152,7 @@ export const CategoryInner = () => {
                 <div className="text-center mt-5 mb-4">
                     <SimpleTitle title="Digər sistemlər" />
                 </div>
-                <div className="row py-4">
+                <div className="row py-4 d-flex justify-content-center">
                     {subCategories.map((item) => {
                         if (item.slug === category) {
                             return "";
@@ -151,7 +164,7 @@ export const CategoryInner = () => {
                                     getInnerPage(item.slug);
                                 }}
                                 key={item.id}
-                                className="col-4"
+                                className="col-3"
                             >
                                 <AlSysCard
                                     img={
@@ -167,6 +180,6 @@ export const CategoryInner = () => {
                     })}
                 </div>
             </div>
-        </div>
+        </main>
     );
 };

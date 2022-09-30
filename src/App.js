@@ -18,40 +18,63 @@ import { CategoryInner } from "./pages/CategoryInner";
 import { ProjectProvider } from "./contexts/ProjectContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { CategoryProvider } from "./contexts/CategoryContext";
+import { ProductProvider } from "./contexts/ProductContext";
+import { SearchResults } from "./pages/SearchResults";
+import { SearchProvider } from "./contexts/SearchContext";
 
 function App() {
     return (
         <div className="App">
             <LanguageProvider>
-                <CategoryProvider>
-                    <Layout>
-                        <ProjectProvider>
-                            <Routes>
-                                <Route path="/contact" element={<Contact />} />
-                                <Route path="/" element={<Home />} />
-                                <Route
-                                    path="/projects"
-                                    element={<Projects />}
-                                />
-                                <Route
-                                    path="/projectdetails"
-                                    element={<ProjectDetails />}
-                                />
-                                <Route
-                                    path="/manufacturing"
-                                    element={<Manufacturing />}
-                                />
-                                <Route path="/about" element={<About />} />
-                                <Route path="/details" element={<Product />} />
-                                <Route path="/faqs" element={<FAQs />} />
-                                <Route
-                                    path="/category"
-                                    element={<CategoryInner />}
-                                />
-                            </Routes>
-                        </ProjectProvider>
-                    </Layout>
-                </CategoryProvider>
+                <SearchProvider>
+                    <CategoryProvider>
+                        <ProductProvider>
+                            <Layout>
+                                <ProjectProvider>
+                                    <Routes>
+                                        <Route
+                                            path="/contact"
+                                            element={<Contact />}
+                                        />
+                                        <Route path="/" element={<Home />} />
+                                        <Route
+                                            path="/projects"
+                                            element={<Projects />}
+                                        />
+                                        <Route
+                                            path="/projectdetails"
+                                            element={<ProjectDetails />}
+                                        />
+                                        <Route
+                                            path="/manufacturing"
+                                            element={<Manufacturing />}
+                                        />
+                                        <Route
+                                            path="/about"
+                                            element={<About />}
+                                        />
+                                        <Route
+                                            path="/details"
+                                            element={<Product />}
+                                        />
+                                        <Route
+                                            path="/faqs"
+                                            element={<FAQs />}
+                                        />
+                                        <Route
+                                            path="/searchresults"
+                                            element={<SearchResults />}
+                                        />
+                                        <Route
+                                            path="/category"
+                                            element={<CategoryInner />}
+                                        />
+                                    </Routes>
+                                </ProjectProvider>
+                            </Layout>
+                        </ProductProvider>
+                    </CategoryProvider>
+                </SearchProvider>
             </LanguageProvider>
         </div>
     );

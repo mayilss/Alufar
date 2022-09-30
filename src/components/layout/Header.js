@@ -3,7 +3,16 @@ import { Navbar } from "./Navbar";
 
 const Header = () => {
     return (
-        <header>
+        <header
+            style={{
+                position: "fixed",
+                width: "100%",
+                zIndex: 99999,
+                top: 0,
+                left: 0,
+                right: 0,
+            }}
+        >
             <HeaderTop />
             <Navbar />
         </header>

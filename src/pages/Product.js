@@ -7,20 +7,25 @@ import { SimpleTitle } from "../components/SimpleTitle";
 import { ProjectCard } from "../components/ProjectCard";
 
 import styles from "../styles/Product.module.scss";
+import { useContext } from "react";
+import { LanguageContext } from "../contexts/LanguageContext";
+import { ProductContext } from "../contexts/ProductContext";
 
 export const Product = () => {
     const [similarProducts, setSimilarProducts] = useState([]);
     const [product, setProduct] = useState({});
     const [slug, setSlug] = useState("");
+    const [image, setImage] = useState("");
+
+    const { lang } = useContext(LanguageContext);
+    const { slugChanged } = useContext(ProductContext);
 
     useEffect(() => {
         const fetchSimilarProducts = async () => {
             try {
                 const res = await axios(
                     process.env.REACT_APP_API_URL +
-                        // `/api/products/product-1/similar-products?lang=az&item=4`
-                        process.env.REACT_APP_API_URL +
-                        `/api/products/${slug}?lang=az&item=4`
+                        `/api/products/${slug}/similar-products?lang=az&item=4`
                 );
                 setSimilarProducts(res.data.data.products);
             } catch (error) {
@@ -28,32 +33,46 @@ export const Product = () => {
             }
         };
 
-        const fetchProduct = async () => {
-            try {
-                const res = await axios(
-                    process.env.REACT_APP_API_URL +
-                        `/api/products/product-1?lang=az`
-                );
-                setProduct(res.data.data);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
-        fetchProduct();
         fetchSimilarProducts();
     }, [slug]);
+
+    useEffect(() => {
+        setSlug(sessionStorage.getItem("productSlug"));
+        console.log(sessionStorage.getItem("productSlug"));
+        const cancelToken = axios.CancelToken.source();
+        const fetchProduct = async () => {
+            await axios(
+                process.env.REACT_APP_API_URL +
+                    `/api/products/${slug}?lang=${lang}`,
+                { cancelToken: cancelToken.token }
+            )
+                .then((res) => {
+                    setProduct(res.data.data);
+                })
+                .catch((err) => {
+                    if (axios.isCancel(err)) {
+                        console.log(err);
+                    }
+                });
+        };
+        fetchProduct();
+        product.image !== undefined &&
+            setImage(product.image.slice(2, product.image.length - 2));
+        return () => {
+            cancelToken.cancel();
+        };
+    }, [lang, slug, slugChanged, image, product.image]);
 
     const createMarkup = (body) => {
         return { __html: body };
     };
 
     const handleItem = (slug) => {
-        setSlug("/" + slug);
+        setSlug(slug);
     };
 
     return (
-        <div className={styles.page}>
+        <main className={styles.page}>
             <div className="container">
                 <div className={styles.wrapper}>
                     <div className="row">
@@ -63,7 +82,7 @@ export const Product = () => {
                                     src={
                                         process.env.REACT_APP_API_URL +
                                         "/storage/" +
-                                        product.image
+                                        image
                                     }
                                     alt=""
                                 />
@@ -77,9 +96,17 @@ export const Product = () => {
                                         product.description
                                     )}
                                 />
-                                <div className={styles.btnHolder}>
+                                <a
+                                    target="blank"
+                                    href={
+                                        process.env.REACT_APP_API_URL +
+                                        "/storage/" +
+                                        product.catalog_link
+                                    }
+                                    className={styles.btnHolder}
+                                >
                                     <Button content="Kataloqa bax" />
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -87,29 +114,30 @@ export const Product = () => {
                 <div className={styles.similar}>
                     <SimpleTitle title="Oxşar məhsullar" />
                     <div className="row">
-                        {similarProducts.map((item) => {
-                            return (
-                                <div
-                                    onClick={() => {
-                                        handleItem(item.slug);
-                                    }}
-                                    key={item.id}
-                                    className="col-md-3 col-6"
-                                >
-                                    <ProjectCard
-                                        img={
-                                            process.env.REACT_APP_API_URL +
-                                            "/storage/" +
-                                            item.image
-                                        }
-                                        title={item.title}
-                                    />
-                                </div>
-                            );
-                        })}
+                        {similarProducts &&
+                            similarProducts.map((item) => {
+                                return (
+                                    <div
+                                        onClick={() => {
+                                            handleItem(item.slug);
+                                        }}
+                                        key={item.id}
+                                        className="col-md-3 col-6"
+                                    >
+                                        <ProjectCard
+                                            img={
+                                                process.env.REACT_APP_API_URL +
+                                                "/storage/" +
+                                                item.image
+                                            }
+                                            title={item.title}
+                                        />
+                                    </div>
+                                );
+                            })}
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     );
 };

@@ -4,7 +4,7 @@ import map from "../images/map-1.png";
 
 export const Contact = () => {
     return (
-        <div className={styles.wrapper}>
+        <main className={styles.wrapper}>
             <ContactForm contactPage={true} />
             <a
                 className="col-md-6 col-12"
@@ -13,6 +13,6 @@ export const Contact = () => {
             >
                 <img src={map} alt="map" />
             </a>
-        </div>
+        </main>
     );
 };

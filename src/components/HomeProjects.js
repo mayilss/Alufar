@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
 import styles from "../styles/HomeProjects.module.scss";
 
 import arrowLeft from "../icons/arrow-left.svg";
@@ -10,6 +11,7 @@ import { Title } from "./Title";
 import { Button } from "../components/Button";
 import { useContext } from "react";
 import { ProjectContext } from "../contexts/ProjectContext";
+import { HomeProjectImages } from "./HomeProjectImages";
 
 export const HomeProjects = () => {
     const { projects, getDetails } = useContext(ProjectContext);
@@ -17,6 +19,7 @@ export const HomeProjects = () => {
     const createMarkup = (body) => {
         return { __html: body };
     };
+
     return (
         <div className={styles.projects}>
             <div className="container mb-5">
@@ -101,22 +104,7 @@ export const HomeProjects = () => {
                             </button>
                         </div>
                     </div>
-                    <div className={styles.images}>
-                        {projects.map((item) => {
-                            return (
-                                <div key={item.id} className="col-6 col-md-3">
-                                    <img
-                                        src={
-                                            process.env.REACT_APP_API_URL +
-                                            "/storage/" +
-                                            item.image
-                                        }
-                                        alt="projects"
-                                    />
-                                </div>
-                            );
-                        })}
-                    </div>
+                    <HomeProjectImages projects={projects} />
                 </div>
             </div>
         </div>

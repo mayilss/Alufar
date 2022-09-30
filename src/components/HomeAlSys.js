@@ -19,7 +19,7 @@ export const HomeAlSys = () => {
         const fetchSubCategories = async () => {
             await axios(
                 process.env.REACT_APP_API_URL +
-                    `/api/categories/aluminium-systems?lang=${lang}`,
+                    `/api/categories/aluminium-systems-1?lang=${lang}`,
                 { cancelToken: cancelToken.token }
             )
                 .then((res) => {

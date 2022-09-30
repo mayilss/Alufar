@@ -69,7 +69,7 @@ export const About = () => {
     };
 
     return (
-        <div className={styles.wrapper}>
+        <main className={styles.wrapper}>
             <img src={empty} alt="video" width="100%" />
             <div className="container">
                 <div className="row mt-5">
@@ -144,6 +144,6 @@ export const About = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     );
 };

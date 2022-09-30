@@ -6,7 +6,7 @@ import { HomeShowroom } from "../components/HomeShowroom";
 
 export const Home = () => {
     return (
-        <main>
+        <main style={{ marginTop: "12.8rem" }}>
             <BannerVideo />
             <HomeAlSys />
             <HomeProjects />

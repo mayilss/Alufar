@@ -1,11 +1,24 @@
+@import "../App.scss";
+
+.pd-Wrapper {
+    position: relative;
+}
+.scrollTop {
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    background-color: $yellow;
+    img {
+        width: 5rem;
+        transform: rotate(90deg);
+    }
+}
+
 .my-masonry-grid {
     display: -webkit-box;
-    /* Not needed if autoprefixing */
     display: -ms-flexbox;
-    /* Not needed if autoprefixing */
     display: flex;
     margin-left: -1rem;
-    /* gutter size offset */
     width: auto;
 }
 
@@ -26,7 +39,7 @@
     }
 }
 
-.pd-contentWrapper{
+.pd-contentWrapper {
     position: absolute;
     background-color: rgba(50, 48, 49, 0.5);
     top: 0;
@@ -41,7 +54,6 @@
     flex-direction: column;
     row-gap: 1.6rem;
     margin: 14rem 0 0 16rem;
-
 
     h2 {
         font-weight: 600;
@@ -73,7 +85,7 @@
 
 @media screen and (max-width: 576px) {
     html {
-      font-size: 4px;
+        font-size: 4px;
     }
     .pd-btnHolder {
         position: absolute;
@@ -81,4 +93,4 @@
         bottom: 4rem;
         max-width: 20rem;
     }
-  }
+}

@@ -34,9 +34,9 @@ export const FAQs = () => {
     }
 
     return (
-        <div className={styles.wrapper}>
+        <main className={styles.wrapper}>
             <Banner item={{ ...item }} />
             <div className={styles.questionHolder}>{content}</div>
-        </div>
+        </main>
     );
 };

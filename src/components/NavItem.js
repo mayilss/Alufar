@@ -11,7 +11,7 @@ import empty from "../images/empty-rect.png";
 import { useContext } from "react";
 import { LanguageContext } from "../contexts/LanguageContext";
 import { CategoryContext } from "../contexts/CategoryContext";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const NavItem = ({ title, slug }) => {
     const { lang } = useContext(LanguageContext);
@@ -19,6 +19,8 @@ export const NavItem = ({ title, slug }) => {
     const [subCategories, setSubCategories] = useState([]);
     const [subActive, setSubActive] = useState(false);
     const [img, setImg] = useState(empty);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const cancelToken = axios.CancelToken.source();
@@ -70,11 +72,11 @@ export const NavItem = ({ title, slug }) => {
                         {subCategories.length !== 0 && window.innerWidth > 768
                             ? subCategories.map((item) => {
                                   return (
-                                      <Link
-                                          to="/category"
+                                      <div
                                           key={item.id}
                                           onClick={() => {
                                               getInnerPage(item.slug);
+                                              navigate("/category");
                                           }}
                                           className={styles.dropdownItem}
                                           onMouseEnter={() => {
@@ -83,7 +85,7 @@ export const NavItem = ({ title, slug }) => {
                                                       process.env
                                                           .REACT_APP_API_URL +
                                                           "/storage/" +
-                                                          item.image
+                                                          item.icon
                                                   );
                                               } else {
                                                   setImg(empty);
@@ -100,7 +102,7 @@ export const NavItem = ({ title, slug }) => {
                                                   slug={item.slug}
                                               />
                                           </ul>
-                                      </Link>
+                                      </div>
                                   );
                               })
                             : null}

@@ -4,14 +4,27 @@ import phone from "../../icons/phone.svg";
 import search from "../../icons/search.svg";
 import { useState } from "react";
 import { useContext } from "react";
+import { useRef } from "react";
 import { LanguageContext } from "../../contexts/LanguageContext";
+import { SearchContext } from "../../contexts/SearchContext";
+import { useNavigate } from "react-router-dom";
 
 export const HeaderTop = () => {
     const { lang, setAz, setEn, setRu } = useContext(LanguageContext);
+    const { getSearchResults } = useContext(SearchContext);
     const [isOpened, setIsOpened] = useState(false);
 
+    const inputElement = useRef();
+
+    const navigate = useNavigate();
+
     const searchHandler = () => {
-        setIsOpened(!isOpened);
+        if (inputElement.current.value === "") {
+            setIsOpened(!isOpened);
+        } else {
+            getSearchResults(inputElement.current.value);
+            navigate("/searchresults");
+        }
     };
 
     let customer;
@@ -52,11 +65,12 @@ export const HeaderTop = () => {
                         >
                             <img src={search} alt="search" />
                         </button>
-                        {isOpened ? (
-                            <input type="text" placeholder={placeholder} />
-                        ) : (
-                            ""
-                        )}
+                        <input
+                            ref={inputElement}
+                            type="text"
+                            placeholder={placeholder}
+                            className={isOpened === false ? "d-none" : ""}
+                        />
                         <button
                             onClick={() => {
                                 setAz();
