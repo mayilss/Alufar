@@ -58,6 +58,8 @@
     input,
     textarea {
         background-color: transparent;
+        color: #ffffff;
+        font-size: 1.6rem;
         border: 1px solid #ffffff;
         &:focus {
             border: 1px solid $yellow;
