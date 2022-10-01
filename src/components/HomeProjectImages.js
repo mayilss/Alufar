@@ -5,8 +5,6 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import styles from "../styles/HomeProjectImages.module.scss";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useContext } from "react";
-import { ProjectContext } from "../contexts/ProjectContext";
 
 const options = {
     loop: true,
@@ -26,7 +24,7 @@ const options = {
 
 export const HomeProjectImages = ({ projects, indexState }) => {
     const [images, setImages] = useState([]);
-    const [index, setIndex] = indexState;
+    const [indexx, setIndex] = indexState;
     useEffect(() => {
         setImages(projects);
         console.log("object");
@@ -45,6 +43,7 @@ export const HomeProjectImages = ({ projects, indexState }) => {
                                 className="item"
                                 onClick={() => {
                                     setIndex(index);
+                                    console.log(indexx)
                                 }}
                             >
                                 <img
