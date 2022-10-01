@@ -7,8 +7,39 @@ import ig from "../../icons/ig.svg";
 import yt from "../../icons/yt.svg";
 import ln from "../../icons/ln.svg";
 import { Link } from "react-router-dom";
+// import { useEffect } from "react";
+// import axios from 'axios';
+// import { useState } from "react";
+// import { LanguageContext } from "../../contexts/LanguageContext";
+// import { useContext } from "react";
 
 const Footer = () => {
+    // const [subCategories, setSubCategories] = useState([]);
+    // const { lang } = useContext(LanguageContext);
+
+    // useEffect(() => {
+    //     const cancelToken = axios.CancelToken.source();
+    //     const fetchSubCategories = async () => {
+    //         await axios(
+    //             process.env.REACT_APP_API_URL +
+    //                 `/api/categories/aluminium-systems-1?lang=${lang}`,
+    //             { cancelToken: cancelToken.token }
+    //         )
+    //             .then((res) => {
+    //                 setSubCategories(res.data.data);
+    //             })
+    //             .catch((err) => {
+    //                 if (axios.isCancel(err)) {
+    //                     console.log(err);
+    //                 }
+    //             });
+    //     };
+    //     fetchSubCategories();
+    //     return () => {
+    //         cancelToken.cancel();
+    //     };
+    // }, [lang]);
+
     return (
         <footer className={styles.wrapper}>
             <div className="container">

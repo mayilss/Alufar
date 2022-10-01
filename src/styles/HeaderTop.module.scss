@@ -23,16 +23,11 @@
     align-items: center;
     column-gap: 8px;
 
-    img {
-        width: 1.6rem;
-        height: 1.6rem;
-    }
-
     p {
         color: #ffffff;
         margin: 0;
         padding: 0;
-        font-weight: 300;
+        font-weight: 500;
         font-size: 1.6rem;
         line-height: 1.8rem;
 
@@ -62,6 +57,7 @@
         font-weight: 300;
         font-size: 1.6rem;
         line-height: 1.8rem;
+
         &::placeholder {
             color: #ffffff;
         }
@@ -85,7 +81,68 @@
             border-bottom: 2px solid #ffd600;
         }
     }
+
     .langActive {
         border-bottom: 2px solid #ffd600;
     }
+}
+
+.trinTrin {
+    animation-name: trin;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.iconPhone {
+    background-image: url('../icons/phone.svg');
+    background-repeat: no-repeat;
+    background-size: 2.2rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    display: inline-block;
+}
+
+@keyframes trin {
+
+    from {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+
+    20%,
+    32%,
+    44%,
+    56%,
+    68% {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+
+    23%,
+    35%,
+    47%,
+    59%,
+    71% {
+        transform: rotate3d(0, 0, 1, 15deg);
+    }
+
+    26%,
+    38%,
+    50%,
+    62%,
+    74% {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+
+    29%,
+    41%,
+    53%,
+    65%,
+    77% {
+        transform: rotate3d(0, 0, 1, -15deg);
+    }
+
+    80% {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+
 }

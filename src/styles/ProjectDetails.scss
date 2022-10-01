@@ -8,6 +8,7 @@
     bottom: 3rem;
     right: 3rem;
     background-color: $yellow;
+    animation: beat 0.7s infinite ;
     img {
         width: 5rem;
         transform: rotate(90deg);
@@ -94,3 +95,18 @@
         max-width: 20rem;
     }
 }
+
+@keyframes beat {
+        0% {
+            transform: scale(1.1);
+        }
+    
+        50% {
+            transform: scale(1.0);
+        }
+    
+        100%{
+            transform: scale(1.1);
+        }
+    
+    }

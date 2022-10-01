@@ -1,6 +1,5 @@
 import styles from "../../styles/HeaderTop.module.scss";
 
-import phone from "../../icons/phone.svg";
 import search from "../../icons/search.svg";
 import { useState } from "react";
 import { useContext } from "react";
@@ -49,7 +48,10 @@ export const HeaderTop = () => {
                     ) : (
                         <div className={styles.left}>
                             <div className={styles.customer}>
-                                <img src={phone} alt="phone" />
+                                <span class={`${styles.iconPhone} ${styles.trinTrin}`}>
+                                </span>
+                                {/* <img src={phone} alt="phone" /> */}
+                                {/* <i class="fa-solid fa-triangle-exclamation fa-fade"></i> */}
                                 <p>
                                     {customer}
                                     <span>+994 12 310 39 49</span>
