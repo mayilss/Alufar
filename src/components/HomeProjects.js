@@ -12,16 +12,18 @@ import { Button } from "../components/Button";
 import { useContext } from "react";
 import { ProjectContext } from "../contexts/ProjectContext";
 import { HomeProjectImages } from "./HomeProjectImages";
+import { useState } from "react";
 
 export const HomeProjects = () => {
     const { projects, getDetails } = useContext(ProjectContext);
+    const [index, setIndex] = useState(0);
 
     const createMarkup = (body) => {
         return { __html: body };
     };
 
     return (
-        <div className={styles.projects}>
+        <div id="projects" className={styles.projects}>
             <div className="container mb-5">
                 <div className={styles.wrapper}>
                     <Title content="Proyektlər" />
@@ -37,7 +39,7 @@ export const HomeProjects = () => {
                                         <div
                                             key={item.id}
                                             className={`carousel-item slide ${
-                                                item.id === projects[0].id
+                                                item.id === projects[index].id
                                                     ? "active"
                                                     : ""
                                             }`}
@@ -104,7 +106,10 @@ export const HomeProjects = () => {
                             </button>
                         </div>
                     </div>
-                    <HomeProjectImages projects={projects} />
+                    <HomeProjectImages
+                        projects={projects}
+                        indexState={[index, setIndex]}
+                    />
                 </div>
             </div>
         </div>

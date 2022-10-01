@@ -1,5 +1,5 @@
 .wrapper {
-    max-height: 50rem;
+    max-height: 500px;
     overflow: hidden;
     position: relative;
     video {
@@ -13,8 +13,17 @@
 }
 .content {
     position: absolute;
-    width: 100rem;
+    width: 100%;
     z-index: 15;
-    top: 13rem;
-    left: -20rem;
+    top: 40%;
+    left: -30%;
+}
+
+@media screen and (max-width: 768px) {
+    .content {
+        left: -1rem;
+        a {
+            font-size: 3rem !important;
+        }
+    }
 }

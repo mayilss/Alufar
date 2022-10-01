@@ -1,6 +1,6 @@
 import styles from "../styles/HomeShowroom.module.scss";
 
-import empty from "../images/empty.png";
+// import empty from "../images/empty.png";
 
 import { Title } from "./Title";
 

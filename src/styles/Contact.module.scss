@@ -1,11 +1,10 @@
-.wrapper{
+.wrapper {
     display: flex;
     flex-wrap: wrap;
-    a{
-        img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
+}
+
+.mapHolder {
+    height: 500px;
+    z-index: 500;
+    overflow: hidden;
 }

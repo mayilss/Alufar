@@ -49,7 +49,6 @@ export const ContactForm = ({ contactPage }) => {
                             }
                         >
                             <div className={styles.formItem}>
-                                <label htmlFor="name">Ad və Soyad</label>
                                 <input
                                     type="text"
                                     value={name || ""}
@@ -57,9 +56,9 @@ export const ContactForm = ({ contactPage }) => {
                                         setName(e.target.value);
                                     }}
                                 />
+                                <label htmlFor="name">Ad və Soyad</label>
                             </div>
                             <div className={styles.formItem}>
-                                <label htmlFor="email">Email</label>
                                 <input
                                     type="email"
                                     value={email || ""}
@@ -67,10 +66,13 @@ export const ContactForm = ({ contactPage }) => {
                                         setEmail(e.target.value);
                                     }}
                                 />
+                                <label htmlFor="email">Email</label>
                             </div>
                         </div>
                         <div className={styles.formItem}>
-                            <label htmlFor="message">Mesaj</label>
+                            <div className={styles.btn}>
+                                <Button content="Göndər" />
+                            </div>
                             <textarea
                                 name="message"
                                 cols="30"
@@ -80,9 +82,7 @@ export const ContactForm = ({ contactPage }) => {
                                     setMessage(e.target.value);
                                 }}
                             ></textarea>
-                            <div className={styles.btn}>
-                                <Button content="Göndər" />
-                            </div>
+                            <label htmlFor="message">Mesaj</label>
                         </div>
                     </form>
                 </div>

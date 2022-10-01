@@ -21,7 +21,7 @@ export const ProjectDetails = () => {
         const fetchProject = async () => {
             await axios(
                 process.env.REACT_APP_API_URL +
-                    `/api/projects/${slugState}?lang=az`
+                    `/api/projects${slugState}?lang=az`
             )
                 .then((res) => {
                     setProject(res.data.data);
@@ -59,7 +59,7 @@ export const ProjectDetails = () => {
         };
     }, [slugChanged, slugState, project.gallery, gallery.length]);
     useEffect(() => {
-        setSlugState(sessionStorage.getItem("slug"));
+        setSlugState("/" + sessionStorage.getItem("slug"));
     }, [slugChanged]);
 
     const createMarkup = (body) => {

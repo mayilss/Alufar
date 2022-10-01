@@ -41,7 +41,7 @@
 
 .formItem {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     row-gap: 8px;
 
     label {
@@ -59,9 +59,12 @@
     textarea {
         background-color: transparent;
         border: 1px solid #ffffff;
-        &:focus{
-            outline: $yellow;
+        &:focus {
             border: 1px solid $yellow;
+            outline: $yellow;
+        }
+        &:focus + label {
+            color: $yellow;
         }
     }
 }
@@ -82,7 +85,7 @@
     }
 }
 
-.contactData{
+.contactData {
     display: flex;
     flex-direction: column;
     row-gap: 1.6rem;
@@ -96,7 +99,7 @@
     margin: 0 auto;
     column-gap: 2rem;
 
-    img{
+    img {
         width: 2.4rem;
     }
 

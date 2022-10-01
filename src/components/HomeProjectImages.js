@@ -24,28 +24,27 @@ const options = {
     },
 };
 
-export const HomeProjectImages = ({ projects }) => {
-    const { getDetails } = useContext(ProjectContext);
+export const HomeProjectImages = ({ projects, indexState }) => {
     const [images, setImages] = useState([]);
+    const [index, setIndex] = indexState;
     useEffect(() => {
         setImages(projects);
         console.log("object");
     }, [projects]);
     return (
-        <div className={styles.wrapper}>
+        <a href="#projects" className={styles.wrapper}>
             {images.length !== 0 && (
                 <OwlCarousel
                     className="owl-theme carousel-wrapper mt-4"
                     {...options}
                 >
-                    {images.map((item) => {
-                        console.log("worked!", item);
+                    {images.map((item, index) => {
                         return (
                             <div
                                 key={item.id}
                                 className="item"
                                 onClick={() => {
-                                    getDetails(item.slug);
+                                    setIndex(index);
                                 }}
                             >
                                 <img
@@ -61,6 +60,6 @@ export const HomeProjectImages = ({ projects }) => {
                     })}
                 </OwlCarousel>
             )}
-        </div>
+        </a>
     );
 };

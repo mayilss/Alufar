@@ -51,7 +51,7 @@ export const SearchResults = () => {
         <main className="container py-5">
             <SimpleTitle title="Axtarış nəticələri" />
             <div className="row mt-5">
-                {results.products.length > 0 &&
+                {results.products &&
                     results.products.map((item) => {
                         return (
                             <div

@@ -4,7 +4,7 @@ import icon1 from "../icons/about-icon1.svg";
 import icon2 from "../icons/about-icon2.svg";
 import icon3 from "../icons/about-icon3.svg";
 import icon4 from "../icons/about-icon4.svg";
-import empty from "../images/empty.png";
+// import empty from "../images/empty.png";
 
 import { SimpleTitle } from "../components/SimpleTitle";
 import { useEffect } from "react";
