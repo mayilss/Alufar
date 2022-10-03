@@ -45,9 +45,9 @@ const Footer = () => {
             <div className="container">
                 <div className="row">
                     <div className={styles.content}>
-                        <div className={styles.logo}>
+                        <Link to="/" className={styles.logo}>
                             <img src={logo} alt="logo" />
-                        </div>
+                        </Link>
                         <div className={styles.inner}>
                             <div className={styles.item}>
                                 <h4>Alüminium sistemlər</h4>

@@ -30,7 +30,7 @@ export const HomeProjectImages = ({ projects, indexState }) => {
         console.log("object");
     }, [projects]);
     return (
-        <a href="#projects" className={styles.wrapper}>
+        <a href="#projects-top" className={styles.wrapper}>
             {images.length !== 0 && (
                 <OwlCarousel
                     className="owl-theme carousel-wrapper mt-4"
@@ -43,7 +43,7 @@ export const HomeProjectImages = ({ projects, indexState }) => {
                                 className="item"
                                 onClick={() => {
                                     setIndex(index);
-                                    console.log(indexx)
+                                    console.log(indexx);
                                 }}
                             >
                                 <img

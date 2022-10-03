@@ -34,61 +34,74 @@ export const ContactForm = ({ contactPage }) => {
     return (
         <div
             className={
-                contactPage ? `col-md-6 col-12 ${styles.form}` : styles.form
+                contactPage
+                    ? `col-md-6 col-12 ${styles.form} ` + styles.formPage
+                    : styles.form
             }
         >
-            <div className="container">
-                <div className={styles.wrapper}>
-                    <h2>Bizimlə Əlaqə</h2>
-                    <form onSubmit={handleSubmit}>
-                        <div
-                            className={
-                                contactPage
-                                    ? styles.itemHolderCol
-                                    : styles.itemHolder
-                            }
-                        >
-                            <div className={styles.formItem}>
-                                <input
-                                    type="text"
-                                    value={name || ""}
-                                    onChange={(e) => {
-                                        setName(e.target.value);
-                                    }}
-                                />
-                                <label htmlFor="name">Ad və Soyad</label>
+            <h2>Bizimlə Əlaqə</h2>
+            <div
+                className={
+                    !contactPage ? styles.innerForm : styles.innerFormPage
+                }
+            >
+                <div className={!contactPage ? " col-md-6 col-12" : ""}>
+                    <div className={styles.wrapper}>
+                        <form onSubmit={handleSubmit}>
+                            <div
+                                className={
+                                    contactPage
+                                        ? styles.itemHolderCol
+                                        : styles.itemHolder
+                                }
+                            >
+                                <div className={styles.formItem}>
+                                    <input
+                                        type="text"
+                                        value={name || ""}
+                                        onChange={(e) => {
+                                            setName(e.target.value);
+                                        }}
+                                    />
+                                    <label htmlFor="name">Ad və Soyad</label>
+                                </div>
+                                <div className={styles.formItem}>
+                                    <input
+                                        type="email"
+                                        value={email || ""}
+                                        onChange={(e) => {
+                                            setEmail(e.target.value);
+                                        }}
+                                    />
+                                    <label htmlFor="email">Email</label>
+                                </div>
                             </div>
                             <div className={styles.formItem}>
-                                <input
-                                    type="email"
-                                    value={email || ""}
+                                <div className={styles.btn}>
+                                    <Button content="Göndər" />
+                                </div>
+                                <textarea
+                                    name="message"
+                                    cols="30"
+                                    rows="10"
+                                    value={message || ""}
                                     onChange={(e) => {
-                                        setEmail(e.target.value);
+                                        setMessage(e.target.value);
                                     }}
-                                />
-                                <label htmlFor="email">Email</label>
+                                ></textarea>
+                                <label htmlFor="message">Mesaj</label>
                             </div>
-                        </div>
-                        <div className={styles.formItem}>
-                            <div className={styles.btn}>
-                                <Button content="Göndər" />
-                            </div>
-                            <textarea
-                                name="message"
-                                cols="30"
-                                rows="10"
-                                value={message || ""}
-                                onChange={(e) => {
-                                    setMessage(e.target.value);
-                                }}
-                            ></textarea>
-                            <label htmlFor="message">Mesaj</label>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            {contactPage && (
-                <div className={styles.contactData}>
+                {/* {contactPage && ( */}
+                <div
+                    className={
+                        !contactPage
+                            ? styles.contactData + " col-6 " + styles.dataMobile
+                            : styles.contactData
+                    }
+                >
                     <div className={styles.dataItem}>
                         <img src={loc} alt="loc" />
                         <div>
@@ -115,7 +128,8 @@ export const ContactForm = ({ contactPage }) => {
                         </div>
                     </div>
                 </div>
-            )}
+                {/* )} */}
+            </div>
         </div>
     );
 };

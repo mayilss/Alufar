@@ -40,6 +40,7 @@ export const ProjectDetails = () => {
                                     "/storage/" +
                                     slicedEl
                                 }
+                                loading="lazy"
                             />
                         );
                     });

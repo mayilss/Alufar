@@ -4,7 +4,9 @@
 }
 
 .mapHolder {
-    height: 500px;
     z-index: 500;
     overflow: hidden;
+    height: 100vh;
+    position: sticky;
+    top: 0;
 }

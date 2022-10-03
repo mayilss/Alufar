@@ -3,13 +3,15 @@ import { ProjectContext } from "../contexts/ProjectContext";
 
 import { ProjectCard } from "../components/ProjectCard";
 import { SimpleTitle } from "../components/SimpleTitle";
-import "../";
 
 export const Projects = () => {
     const { projects, getDetails } = useContext(ProjectContext);
 
     return (
-        <main className="container" style={{ marginTop: "12.8rem" }}>
+        <main
+            className="container"
+            style={{ marginTop: "12.8rem", backgroundColor: "#fff" }}
+        >
             <SimpleTitle title="Proyektlər" />
             <div className="row mt-5">
                 {projects.map((item) => {

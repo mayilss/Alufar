@@ -13,10 +13,22 @@ import { useContext } from "react";
 import { ProjectContext } from "../contexts/ProjectContext";
 import { HomeProjectImages } from "./HomeProjectImages";
 import { useState } from "react";
+import { useRef } from "react";
+import { useElementOnScreen } from "../hooks/useElementOnScreen";
 
 export const HomeProjects = () => {
     const { projects, getDetails } = useContext(ProjectContext);
     const [index, setIndex] = useState(0);
+
+    const targetRef = useRef(null);
+    const isVisible = useElementOnScreen(
+        {
+            root: null,
+            rootMargin: "0px",
+            treshold: 0.3,
+        },
+        targetRef
+    );
 
     const createMarkup = (body) => {
         return { __html: body };
@@ -26,7 +38,12 @@ export const HomeProjects = () => {
         <div id="projects" className={styles.projects}>
             <div className="container mb-5">
                 <div className={styles.wrapper}>
-                    <Title content="Proyektlər" />
+                    <Title
+                        visibility={isVisible}
+                        selector={targetRef}
+                        content="Proyektlər"
+                        link="/projects"
+                    />
                     <div className={styles.slider}>
                         <div
                             id="carouselExampleControls"

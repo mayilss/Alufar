@@ -48,8 +48,9 @@ export const HeaderTop = () => {
                     ) : (
                         <div className={styles.left}>
                             <div className={styles.customer}>
-                                <span class={`${styles.iconPhone} ${styles.trinTrin}`}>
-                                </span>
+                                <span
+                                    className={`${styles.iconPhone} ${styles.trinTrin}`}
+                                ></span>
                                 {/* <img src={phone} alt="phone" /> */}
                                 {/* <i class="fa-solid fa-triangle-exclamation fa-fade"></i> */}
                                 <p>

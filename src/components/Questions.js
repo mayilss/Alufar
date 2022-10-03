@@ -13,14 +13,15 @@ export const Questions = ({ question, answer }) => {
     };
 
     return (
-        <div className="container">
+        <div
+            onClick={() => {
+                questionHandler();
+            }}
+            className="container"
+        >
             <div className={styles.wrapper}>
                 <div className={styles.question}>
-                    <button
-                        onClick={() => {
-                            questionHandler();
-                        }}
-                    >
+                    <button>
                         <img src={isOpened ? minus : plus} alt="plus" />
                     </button>
                     <p>{question}</p>
