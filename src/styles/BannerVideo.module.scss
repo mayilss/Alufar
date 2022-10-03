@@ -4,6 +4,7 @@
     video {
         width: 100%;
         object-fit: cover;
+        height: calc(100vh - 129px - 4rem);
     }
 }
 .contentHolder {
@@ -24,6 +25,13 @@
         left: -1rem;
         a {
             font-size: 3rem !important;
+        }
+    }
+}
+@media screen and (max-width: 600px) {
+    .wrapper{
+        video{
+            height: 350px!important;
         }
     }
 }

@@ -34,7 +34,7 @@ const bannerContent = [
     {
         img: industry,
         title: "Sənaye profilləri",
-        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.  Autem excepturi sed quis. Soluta nam esse ipsum illum excepturi, perspiciatis tempora quod tempore cumque aperiam deleniti assumenda voluptatibus maiores omnis sequi!",
+        text: "Standart alüminium profillər ən çox istifadə edilən profil növləridir. Əsas profil formaları, kvadrat, dəyirmi, içi boş yuvarlaq formaları ilə alüminium profilə ehtiyacı olan bir çox sektorda istifadə olunur.",
         slug: "industry-profiles",
     },
     {
@@ -70,7 +70,7 @@ export const CategoryInner = () => {
                             ? // ? "category=" + category + "&"
                               ""
                             : "category=" + isActive + "&"
-                    }item=4`
+                    }item=12`
             )
                 .then((res) => {
                     setProducts(res.data.data.products);
