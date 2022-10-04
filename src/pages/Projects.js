@@ -7,12 +7,14 @@ import { SimpleTitle } from "../components/SimpleTitle";
 export const Projects = () => {
     const { projects, getDetails } = useContext(ProjectContext);
 
+    const margin = {
+        marginTop: "15rem",
+        textAlign: "center",
+    };
+
     return (
-        <main
-            className="container"
-            style={{ marginTop: "12.8rem", backgroundColor: "#fff" }}
-        >
-            <SimpleTitle title="Proyektlər" />
+        <main className="container" style={{ backgroundColor: "#fff" }}>
+            <SimpleTitle style={margin} title={"Proyektlər".toUpperCase()} />
             <div className="row mt-5">
                 {projects.map((item) => {
                     return (

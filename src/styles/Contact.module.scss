@@ -1,6 +1,8 @@
 .wrapper {
     display: flex;
     flex-wrap: wrap;
+    max-height: calc(100vh - 128px);
+    overflow: hidden;
 }
 
 .mapHolder {

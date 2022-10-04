@@ -41,9 +41,9 @@ export const Navbar = () => {
     // }, [lang]);
     const content = categories.map((item) => {
         return (
-            <div key={item.id}>
+            <a href="#alsys" key={item.id}>
                 <NavItem title={item.name} slug={item.slug} />
-            </div>
+            </a>
         );
     });
 

@@ -2,6 +2,12 @@
 
 .wrapper {
     background-color: $bg;
+
+    video {
+        max-height: calc(100vh - 128px - 6rem);
+        width: 100%;
+        object-fit: cover;
+    }
 }
 
 .content {

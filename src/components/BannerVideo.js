@@ -36,6 +36,7 @@ export const BannerVideo = () => {
                     button={true}
                     isWhite={true}
                 />
+                <div id="alsys"></div>
             </div>
         </div>
     );

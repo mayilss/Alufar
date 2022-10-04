@@ -45,7 +45,7 @@ export const ContactForm = ({ contactPage }) => {
                     !contactPage ? styles.innerForm : styles.innerFormPage
                 }
             >
-                <div className={!contactPage ? " col-md-6 col-12" : ""}>
+                <div className={!contactPage ? " col-md-7 col-12" : ""}>
                     <div className={styles.wrapper}>
                         <form onSubmit={handleSubmit}>
                             <div
@@ -55,7 +55,13 @@ export const ContactForm = ({ contactPage }) => {
                                         : styles.itemHolder
                                 }
                             >
-                                <div className={styles.formItem}>
+                                <div
+                                    className={
+                                        contactPage
+                                            ? styles.formItemPage
+                                            : styles.formItem
+                                    }
+                                >
                                     <input
                                         type="text"
                                         value={name || ""}
@@ -65,7 +71,13 @@ export const ContactForm = ({ contactPage }) => {
                                     />
                                     <label htmlFor="name">Ad və Soyad</label>
                                 </div>
-                                <div className={styles.formItem}>
+                                <div
+                                    className={
+                                        contactPage
+                                            ? styles.formItemPage
+                                            : styles.formItem
+                                    }
+                                >
                                     <input
                                         type="email"
                                         value={email || ""}
@@ -76,14 +88,20 @@ export const ContactForm = ({ contactPage }) => {
                                     <label htmlFor="email">Email</label>
                                 </div>
                             </div>
-                            <div className={styles.formItem}>
+                            <div
+                                className={
+                                    contactPage
+                                        ? styles.formItemPage
+                                        : styles.formItem
+                                }
+                            >
                                 <div className={styles.btn}>
                                     <Button content="Göndər" />
                                 </div>
                                 <textarea
                                     name="message"
                                     cols="30"
-                                    rows="10"
+                                    rows="4"
                                     value={message || ""}
                                     onChange={(e) => {
                                         setMessage(e.target.value);
@@ -98,11 +116,15 @@ export const ContactForm = ({ contactPage }) => {
                 <div
                     className={
                         !contactPage
-                            ? styles.contactData + " col-6 " + styles.dataMobile
+                            ? styles.contactData + " col-5 " + styles.dataMobile
                             : styles.contactData
                     }
                 >
-                    <div className={styles.dataItem}>
+                    <div
+                        className={
+                            contactPage ? styles.dataItemPage : styles.dataItem
+                        }
+                    >
                         <img src={loc} alt="loc" />
                         <div>
                             <p>
@@ -111,7 +133,11 @@ export const ContactForm = ({ contactPage }) => {
                             </p>
                         </div>
                     </div>
-                    <div className={styles.dataItem}>
+                    <div
+                        className={
+                            contactPage ? styles.dataItemPage : styles.dataItem
+                        }
+                    >
                         <img src={phone} alt="phone" />
                         <div>
                             <p>+994 12 310 39 49 (6012/6016)</p>
@@ -121,7 +147,11 @@ export const ContactForm = ({ contactPage }) => {
                             <p>+994 (55) 205 03 89 (Satış şöbəsi)</p>
                         </div>
                     </div>
-                    <div className={styles.dataItem}>
+                    <div
+                        className={
+                            contactPage ? styles.dataItemPage : styles.dataItem
+                        }
+                    >
                         <img src={mail} alt="mail" />
                         <div>
                             <p>info@alufar.az</p>

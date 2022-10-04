@@ -22,13 +22,13 @@ const bannerContent = [
     {
         img: bg,
         title: "Memarlıq sistemləri",
-        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.  Autem excepturi sed quis. Soluta nam esse ipsum illum excepturi, perspiciatis tempora quod tempore cumque aperiam deleniti assumenda voluptatibus maiores omnis sequi!",
+        text: "Yüksək izolyasiyalı və sərt iqlimə dayanıqlı fasad sistemləri. Sistemə bütün fasad pəncərələri və qapıları, həmçinin sürmə sistemləri və məhəccərlər daxildir.",
         slug: "architectural-systems-1",
     },
     {
         img: furniture,
         title: "Mebel sistemləri",
-        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.  Autem excepturi sed quis. Soluta nam esse ipsum illum excepturi, perspiciatis tempora quod tempore cumque aperiam deleniti assumenda voluptatibus maiores omnis sequi!",
+        text: "Mebel sistemlərinə bütün növ alüminium profillər, həmçinin fitinqlər və aksesuarlar daxildir.",
         slug: "furniture-systems",
     },
     {
@@ -40,7 +40,7 @@ const bannerContent = [
     {
         img: others,
         title: "Digər sistemlər",
-        text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.  Autem excepturi sed quis. Soluta nam esse ipsum illum excepturi, perspiciatis tempora quod tempore cumque aperiam deleniti assumenda voluptatibus maiores omnis sequi!",
+        text: "Hər növ hidro, buxar və istilik izolyasiya edən və bərkidici materiallar.",
         slug: "other-systems",
     },
 ];
