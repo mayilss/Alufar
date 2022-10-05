@@ -1,7 +1,7 @@
 import { HeaderTop } from "./HeaderTop";
 import { Navbar } from "./Navbar";
 
-const Header = () => {
+export const Header = () => {
     return (
         <header
             style={{
@@ -18,5 +18,3 @@ const Header = () => {
         </header>
     );
 };
-
-export default Header;

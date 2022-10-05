@@ -5,10 +5,14 @@ export const Button = ({ content, click, args }) => {
         <button
             onClick={
                 click
-                    ? () => {
+                    ? (e) => {
+                          e.preventDefault();
                           click(args);
                       }
-                    : console.log(null)
+                    : (e) => {
+                          e.preventDefault();
+                          return;
+                      }
             }
             className={styles.button}
         >

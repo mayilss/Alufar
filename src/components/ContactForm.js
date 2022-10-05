@@ -6,11 +6,36 @@ import mail from "../icons/mail-icon.svg";
 import phone from "../icons/phone.svg";
 import { useState } from "react";
 import axios from "axios";
+import { useEffect } from "react";
 
-export const ContactForm = ({ contactPage }) => {
+export const ContactForm = ({ contactPage, cName }) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
+    const [contacts, setContacts] = useState({});
+    const [phones, setPhones] = useState([]);
+
+    useEffect(() => {
+        const cancelToken = axios.CancelToken.source();
+        const fetchContacts = async () => {
+            await axios(process.env.REACT_APP_API_URL + "/api/contact", {
+                cancelToken: cancelToken.token,
+            })
+                .then((res) => {
+                    setContacts(res.data.data);
+                    const splitted = contacts.phones.split(",");
+                    setPhones(splitted);
+                })
+                .catch((err) => {
+                    return;
+                });
+        };
+        fetchContacts();
+        return () => {
+            cancelToken.cancel();
+        };
+    }, [contacts.phones]);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
@@ -20,11 +45,11 @@ export const ContactForm = ({ contactPage }) => {
         try {
             await axios({
                 method: "post",
-                url: process.env.REACT_APP_API_URL + "/api/contact-test",
+                url: process.env.REACT_APP_API_URL + "/api/contact",
                 data: formData,
             });
         } catch (err) {
-            console.log(err);
+            return;
         }
         setName("");
         setEmail("");
@@ -36,7 +61,7 @@ export const ContactForm = ({ contactPage }) => {
             className={
                 contactPage
                     ? `col-md-6 col-12 ${styles.form} ` + styles.formPage
-                    : styles.form
+                    : styles.form + " " + cName
             }
         >
             <h2>Bizimlə Əlaqə</h2>
@@ -127,10 +152,7 @@ export const ContactForm = ({ contactPage }) => {
                     >
                         <img src={loc} alt="loc" />
                         <div>
-                            <p>
-                                AZ 1029, Azərbaycan, Bakı, Ziya Bünyadov küç.
-                                2071
-                            </p>
+                            <p>{contacts.address}</p>
                         </div>
                     </div>
                     <div
@@ -140,11 +162,9 @@ export const ContactForm = ({ contactPage }) => {
                     >
                         <img src={phone} alt="phone" />
                         <div>
-                            <p>+994 12 310 39 49 (6012/6016)</p>
-                            <p>+994 (55) 596 34 00</p>
-                            <p>+994 (55) 208 34 00 (Ofis)</p>
-                            <p>+994 (55) 496 34 00 (Satış şöbəsi)</p>
-                            <p>+994 (55) 205 03 89 (Satış şöbəsi)</p>
+                            {phones.map((item, index) => {
+                                return <p key={index}>{item}</p>;
+                            })}
                         </div>
                     </div>
                     <div
@@ -154,7 +174,7 @@ export const ContactForm = ({ contactPage }) => {
                     >
                         <img src={mail} alt="mail" />
                         <div>
-                            <p>info@alufar.az</p>
+                            <p>{contacts.email}</p>
                         </div>
                     </div>
                 </div>

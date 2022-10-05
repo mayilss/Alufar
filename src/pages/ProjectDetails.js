@@ -47,9 +47,8 @@ export const ProjectDetails = () => {
                     setGallery(mapped);
                 })
                 .catch((err) => {
-                    console.log(err);
                     if (axios.isCancel(err)) {
-                        console.log(err);
+                        return;
                     }
                 });
         };

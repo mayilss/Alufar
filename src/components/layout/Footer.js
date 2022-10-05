@@ -7,9 +7,9 @@ import ig from "../../icons/ig.svg";
 import yt from "../../icons/yt.svg";
 import ln from "../../icons/ln.svg";
 import { Link } from "react-router-dom";
-// import { useEffect } from "react";
-// import axios from 'axios';
-// import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import { useState } from "react";
 // import { LanguageContext } from "../../contexts/LanguageContext";
 // import { useContext } from "react";
 
@@ -30,7 +30,7 @@ const Footer = () => {
     //             })
     //             .catch((err) => {
     //                 if (axios.isCancel(err)) {
-    //                     console.log(err);
+    //                     return
     //                 }
     //             });
     //     };
@@ -39,6 +39,26 @@ const Footer = () => {
     //         cancelToken.cancel();
     //     };
     // }, [lang]);
+    const [socials, setSocials] = useState({});
+
+    useEffect(() => {
+        const cancelToken = axios.CancelToken.source();
+        const fetchSocials = async () => {
+            await axios(process.env.REACT_APP_API_URL + `/api/social`, {
+                cancelToken: cancelToken.token,
+            })
+                .then((res) => {
+                    setSocials(res.data.data);
+                })
+                .catch((err) => {
+                    return;
+                });
+        };
+        fetchSocials();
+        return () => {
+            cancelToken.cancel();
+        };
+    }, []);
 
     return (
         <footer className={styles.wrapper}>
@@ -84,10 +104,18 @@ const Footer = () => {
                                 </h4>
                             </div>
                             <div className={styles.socials}>
-                                <img src={fb} alt="socials" />
-                                <img src={ig} alt="socials" />
-                                <img src={yt} alt="socials" />
-                                <img src={ln} alt="socials" />
+                                <a target="blank" href={socials.facebook}>
+                                    <img src={fb} alt="socials" />
+                                </a>
+                                <a target="blank" href={socials.instagram}>
+                                    <img src={ig} alt="socials" />
+                                </a>
+                                <a target="blank" href={socials.youtube}>
+                                    <img src={yt} alt="socials" />
+                                </a>
+                                <a target="blank" href={socials.linkedin}>
+                                    <img src={ln} alt="socials" />
+                                </a>
                             </div>
                         </div>
                     </div>

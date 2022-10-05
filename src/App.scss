@@ -7,9 +7,15 @@ $shadow: 0 2px 8px rgb(0 0 0 / 20%);
 html {
     font-size: 10px;
     font-family: "Montserrat", sans-serif;
+    scroll-behavior: smooth;
 }
 main {
     margin-top: 12.8rem !important;
+}
+#alsys {
+    position: absolute;
+    left: 0;
+    bottom: 100px;
 }
 
 .owl-nav {
@@ -67,6 +73,20 @@ textarea {
 
 main {
     background-color: #f4f4f4;
+}
+.home-main {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.panel {
+    position: relative;
+    width: 100%;
+    z-index: 1000;
+    background-color: #f4f4f4;
+    &:nth-child(1) {
+        height: 100%;
+    }
 }
 
 @media screen and (max-width: 992px) {

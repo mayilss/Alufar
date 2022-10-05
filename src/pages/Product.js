@@ -51,7 +51,7 @@ export const Product = () => {
                 })
                 .catch((err) => {
                     if (axios.isCancel(err)) {
-                        console.log(err);
+                        return;
                     }
                 });
         };

@@ -10,7 +10,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useElementOnScreen } from "../hooks/useElementOnScreen";
 
-export const HomeAlSys = () => {
+export const HomeAlSys = ({ name }) => {
     const [subCategories, setSubCategories] = useState([]);
     const { lang } = useContext(LanguageContext);
     const { getInnerPage } = useContext(CategoryContext);
@@ -40,7 +40,7 @@ export const HomeAlSys = () => {
                 })
                 .catch((err) => {
                     if (axios.isCancel(err)) {
-                        console.log(err);
+                        return;
                     }
                 });
         };
@@ -51,7 +51,7 @@ export const HomeAlSys = () => {
     }, [lang]);
 
     return (
-        <div className="container my-5">
+        <div className={name + " container"}>
             <div className={styles.wrapper}>
                 <Title
                     visibility={isVisible}

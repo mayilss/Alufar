@@ -16,7 +16,7 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useElementOnScreen } from "../hooks/useElementOnScreen";
 
-export const HomeProjects = () => {
+export const HomeProjects = ({ name }) => {
     const { projects, getDetails } = useContext(ProjectContext);
     const [index, setIndex] = useState(0);
 
@@ -35,7 +35,7 @@ export const HomeProjects = () => {
     };
 
     return (
-        <div id="projects" className={styles.projects}>
+        <div id="projects" className={styles.projects + " " + name}>
             <div className="container mb-5">
                 <div className={styles.wrapper}>
                     <Title
@@ -125,7 +125,7 @@ export const HomeProjects = () => {
                     </div>
                     <HomeProjectImages
                         projects={projects}
-                        indexState={[index, setIndex]}
+                        indexState={{ setIndex }}
                     />
                 </div>
             </div>

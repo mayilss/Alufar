@@ -24,10 +24,9 @@ const options = {
 
 export const HomeProjectImages = ({ projects, indexState }) => {
     const [images, setImages] = useState([]);
-    const [indexx, setIndex] = indexState;
+    const { setIndex } = indexState;
     useEffect(() => {
         setImages(projects);
-        console.log("object");
     }, [projects]);
     return (
         <a href="#projects-top" className={styles.wrapper}>
@@ -43,7 +42,6 @@ export const HomeProjectImages = ({ projects, indexState }) => {
                                 className="item"
                                 onClick={() => {
                                     setIndex(index);
-                                    console.log(indexx);
                                 }}
                             >
                                 <img

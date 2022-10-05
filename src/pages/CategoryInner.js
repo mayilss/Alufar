@@ -77,7 +77,7 @@ export const CategoryInner = () => {
                 })
                 .catch((err) => {
                     if (axios.isCancel(err)) {
-                        console.log(err);
+                        return;
                     }
                 });
         };
@@ -98,7 +98,7 @@ export const CategoryInner = () => {
                 })
                 .catch((err) => {
                     if (axios.isCancel(err)) {
-                        console.log(err);
+                        return;
                     }
                 });
         };

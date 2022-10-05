@@ -36,7 +36,7 @@ export const SearchResults = () => {
                 })
                 .catch((err) => {
                     if (axios.isCancel(err)) {
-                        console.log(err);
+                        return;
                     }
                 });
         };

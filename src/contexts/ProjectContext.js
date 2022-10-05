@@ -20,7 +20,7 @@ export const ProjectProvider = ({ children }) => {
                 })
                 .catch((err) => {
                     if (axios.isCancel(err)) {
-                        console.log(err);
+                        return;
                     }
                 });
         };

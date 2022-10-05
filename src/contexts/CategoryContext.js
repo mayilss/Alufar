@@ -23,7 +23,7 @@ export const CategoryProvider = ({ children }) => {
                 })
                 .catch((err) => {
                     if (axios.isCancel(err)) {
-                        console.log(err);
+                        return;
                     }
                 });
         };

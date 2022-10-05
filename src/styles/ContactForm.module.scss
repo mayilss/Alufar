@@ -52,12 +52,16 @@
     display: flex;
     flex-direction: column-reverse;
     row-gap: 8px;
+    position: relative;
 
     label {
         color: #ffffff;
         font-weight: 500;
-        font-size: 1.6rem;
         line-height: 2rem;
+        position: absolute;
+        font-size: 2rem;
+        top: 1.5rem;
+        left: 1.5rem;
     }
 
     input {
@@ -69,13 +73,17 @@
         background-color: transparent;
         color: #ffffff;
         font-size: 1.6rem;
-        border: 1px solid #ffffff;
+        border: none;
+        border-bottom: 1px solid #ffffff;
         &:focus {
-            border: 1px solid $yellow;
+            border-bottom: 1px solid $yellow;
             outline: $yellow;
         }
         &:focus + label {
             color: $yellow;
+            top: -2.5rem;
+            left: 0;
+            font-size: 1.6rem;
         }
     }
 }

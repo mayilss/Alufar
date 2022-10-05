@@ -32,7 +32,7 @@ export const CategoryNav = ({ subSlug }) => {
                 })
                 .catch((err) => {
                     if (axios.isCancel(err)) {
-                        console.log(err);
+                        return;
                     }
                 });
         };

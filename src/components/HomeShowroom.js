@@ -6,7 +6,7 @@ import styles from "../styles/HomeShowroom.module.scss";
 
 import { Title } from "./Title";
 
-export const HomeShowroom = () => {
+export const HomeShowroom = ({ name }) => {
     const targetRef = useRef(null);
     const isVisible = useElementOnScreen(
         {
@@ -17,12 +17,12 @@ export const HomeShowroom = () => {
         targetRef
     );
     return (
-        <div className="container mt-5 pb-5">
+        <div className={"container pb-5 " + name}>
             <div className={styles.wrapper}>
                 <Title
                     visibility={isVisible}
                     selector={targetRef}
-                    content="Showroom"
+                    content="Video Qalereya"
                     link="/about"
                 />
                 <video autoPlay loop muted>

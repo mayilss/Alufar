@@ -7,7 +7,7 @@ import styles from "../styles/NavItem.module.scss";
 
 import arrow from "../icons/arrow-down.svg";
 import arrowW from "../icons/arrow-down-w.svg";
-import empty from "../images/empty-rect.png";
+import empty from "../images/header-icon.jpg";
 import { useContext } from "react";
 import { LanguageContext } from "../contexts/LanguageContext";
 import { CategoryContext } from "../contexts/CategoryContext";
@@ -34,12 +34,14 @@ export const NavItem = ({ title, slug }) => {
                     setSubCategories(res.data.data);
                 })
                 .catch((err) => {
-                    if (axios.isCancel(err)) {
-                        console.log(err);
-                    }
+                    return;
                 });
         };
-        fetchSubCategories();
+        if (slug) {
+            fetchSubCategories();
+        } else {
+            return;
+        }
         return () => {
             cancelToken.cancel();
         };
@@ -74,7 +76,8 @@ export const NavItem = ({ title, slug }) => {
                                   return (
                                       <div
                                           key={item.id}
-                                          onClick={() => {
+                                          onClick={(e) => {
+                                              e.stopPropagation();
                                               getInnerPage(item.slug);
                                               navigate("/category");
                                           }}
