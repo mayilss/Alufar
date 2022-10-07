@@ -3,6 +3,7 @@ import styles from "../styles/Manufacturing.module.scss";
 import empty from "../images/empty.png";
 import { useState } from "react";
 import { SimpleTitle } from "../components/SimpleTitle";
+import { Footer } from "../components/layout/Footer";
 
 export const Manufacturing = () => {
     const [isActive, setIsActive] = useState(false);
@@ -62,6 +63,7 @@ export const Manufacturing = () => {
                     )}
                 </div>
             </div>
+            <Footer />
         </main>
     );
 };

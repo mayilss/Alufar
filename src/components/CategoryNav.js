@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-// import { useQuery } from "react-query";
-// import { getCategories } from "../api/alufarApi";
 import styles from "../styles/CategoryNav.module.scss";
 import { useContext } from "react";
 import { LanguageContext } from "../contexts/LanguageContext";
@@ -24,7 +22,7 @@ export const CategoryNav = ({ subSlug }) => {
         const fetchSubCategories = async () => {
             await axios(
                 process.env.REACT_APP_API_URL +
-                    `/api/categories/${slug}?lang=${lang}`,
+                    `/api/categories${slug}?lang=${lang}`,
                 { cancelToken: cancelToken.token }
             )
                 .then((res) => {
@@ -43,22 +41,10 @@ export const CategoryNav = ({ subSlug }) => {
     }, [slug, lang]);
 
     useEffect(() => {
-        setSlug(sessionStorage.getItem("categorySlug"));
+        setSlug("/" + sessionStorage.getItem("categorySlug"));
     }, [slugChanged]);
 
-    // const {
-    //     isLoading,
-    //     isError,
-    //     error,
-    //     data: categories,
-    // } = useQuery("categories", getCategories);
-
     let content;
-    // if (isLoading) {
-    //     content = null;
-    // } else if (isError) {
-    //     content = <p>{error.message}</p>;
-    // } else {
     content = subCategories.map((item) => {
         return (
             <button

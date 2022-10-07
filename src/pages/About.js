@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import { AboutCard } from "../components/AboutCard";
+import { Footer } from "../components/layout/Footer";
 
 const bottomContent = [
     {
@@ -148,6 +149,7 @@ export const About = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </main>
     );
 };

@@ -7,6 +7,7 @@ import phone from "../icons/phone.svg";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
+import { useRef } from "react";
 
 export const ContactForm = ({ contactPage, cName }) => {
     const [name, setName] = useState("");
@@ -14,6 +15,14 @@ export const ContactForm = ({ contactPage, cName }) => {
     const [message, setMessage] = useState("");
     const [contacts, setContacts] = useState({});
     const [phones, setPhones] = useState([]);
+
+    const nameInput = useRef();
+    const mailInput = useRef();
+    const messageInput = useRef();
+
+    const handleFocus = (e) => {
+        e.focus();
+    };
 
     useEffect(() => {
         const cancelToken = axios.CancelToken.source();
@@ -88,13 +97,21 @@ export const ContactForm = ({ contactPage, cName }) => {
                                     }
                                 >
                                     <input
+                                        ref={nameInput}
                                         type="text"
                                         value={name || ""}
                                         onChange={(e) => {
                                             setName(e.target.value);
                                         }}
                                     />
-                                    <label htmlFor="name">Ad və Soyad</label>
+                                    <label
+                                        onClick={() => {
+                                            handleFocus(nameInput.current);
+                                        }}
+                                        htmlFor="name"
+                                    >
+                                        Ad və Soyad
+                                    </label>
                                 </div>
                                 <div
                                     className={
@@ -104,13 +121,21 @@ export const ContactForm = ({ contactPage, cName }) => {
                                     }
                                 >
                                     <input
+                                        ref={mailInput}
                                         type="email"
                                         value={email || ""}
                                         onChange={(e) => {
                                             setEmail(e.target.value);
                                         }}
                                     />
-                                    <label htmlFor="email">Email</label>
+                                    <label
+                                        onClick={() => {
+                                            handleFocus(mailInput.current);
+                                        }}
+                                        htmlFor="email"
+                                    >
+                                        Email
+                                    </label>
                                 </div>
                             </div>
                             <div
@@ -124,6 +149,7 @@ export const ContactForm = ({ contactPage, cName }) => {
                                     <Button content="Göndər" />
                                 </div>
                                 <textarea
+                                    ref={messageInput}
                                     name="message"
                                     cols="30"
                                     rows="4"
@@ -132,7 +158,14 @@ export const ContactForm = ({ contactPage, cName }) => {
                                         setMessage(e.target.value);
                                     }}
                                 ></textarea>
-                                <label htmlFor="message">Mesaj</label>
+                                <label
+                                    onClick={() => {
+                                        handleFocus(messageInput.current);
+                                    }}
+                                    htmlFor="message"
+                                >
+                                    Mesaj
+                                </label>
                             </div>
                         </form>
                     </div>

@@ -2,6 +2,13 @@ import styles from "../styles/BannerVideo.module.scss";
 import { Button } from "./Button";
 
 export const BannerVideo = ({ name }) => {
+    const navigateVideo = () => {
+        window.open(
+            "https://www.youtube.com/watch?v=l4hBNIwT3zM&t=1s",
+            "_blank"
+        );
+    };
+
     return (
         <div className={styles.wrapper + " " + name}>
             <a
@@ -24,11 +31,10 @@ export const BannerVideo = ({ name }) => {
                         <div className={styles.right}></div>
                     </div>
                     <div className={styles.btnHolder}>
-                        <Button content="Bax" />
+                        <Button click={navigateVideo} content="Bax" />
                     </div>
                 </section>
             </div>
-            <div id="alsys"></div>
         </div>
     );
 };

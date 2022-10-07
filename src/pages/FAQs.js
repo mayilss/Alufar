@@ -7,6 +7,7 @@ import { Banner } from "../components/Banner";
 import styles from "../styles/FAQs.module.scss";
 
 import bg from "../images/faqs-bg.png";
+import { Footer } from "../components/layout/Footer";
 const item = {
     img: bg,
     title: "FAQ",
@@ -37,6 +38,7 @@ export const FAQs = () => {
         <main className={styles.wrapper}>
             <Banner item={{ ...item }} />
             <div className={styles.questionHolder}>{content}</div>
+            <Footer />
         </main>
     );
 };

@@ -10,6 +10,7 @@ import styles from "../styles/Product.module.scss";
 import { useContext } from "react";
 import { LanguageContext } from "../contexts/LanguageContext";
 import { ProductContext } from "../contexts/ProductContext";
+import { Footer } from "../components/layout/Footer";
 
 export const Product = () => {
     const [similarProducts, setSimilarProducts] = useState([]);
@@ -138,6 +139,7 @@ export const Product = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </main>
     );
 };

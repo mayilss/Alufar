@@ -3,7 +3,7 @@ import { ContactForm } from "../components/ContactForm";
 import { HomeAlSys } from "../components/HomeAlSys";
 import { HomeProjects } from "../components/HomeProjects";
 import { HomeShowroom } from "../components/HomeShowroom";
-import Footer from "../components/layout/Footer";
+import { Footer } from "../components/layout/Footer";
 
 export const Home = () => {
     return (

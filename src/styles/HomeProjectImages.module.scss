@@ -1,9 +1,47 @@
 .wrapper {
     width: 100%;
+    position: relative;
+
     img {
         padding: 1rem;
         object-fit: cover;
         height: 30rem;
         cursor: pointer;
+    }
+    .imgHolder {
+        &:hover {
+            .content {
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                top: 0;
+                background-color: rgba(0, 0, 0, 0.7);
+                margin: 1rem;
+                p {
+                    display: block;
+                    color: #fff;
+                    font-size: 2rem;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+    .content {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        margin: 1rem;
+        p {
+            display: none;
+        }
     }
 }

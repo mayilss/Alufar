@@ -4,6 +4,7 @@
 .titleW {
     position: relative;
     height: 50px;
+    margin-top: 3.2rem;
 
     p {
         font-weight: 600;
@@ -37,29 +38,29 @@
     .a::before {
         top: -2px;
         left: -2px;
-        border-top: 4px solid #ff0;
-        border-left: 4px solid #ff0;
+        border-top: 4px solid $grey;
+        border-left: 4px solid $grey;
     }
 
     .a::after {
         top: -2px;
         right: -2px;
-        border-top: 4px solid #ff0;
-        border-right: 4px solid #ff0;
+        border-top: 4px solid $grey;
+        border-right: 4px solid $grey;
     }
 
     .span::before {
         bottom: -2px;
         left: -2px;
-        border-bottom: 4px solid #ff0;
-        border-left: 4px solid #ff0;
+        border-bottom: 4px solid $grey;
+        border-left: 4px solid $grey;
     }
 
     .span::after {
         bottom: -2px;
         right: -2px;
-        border-bottom: 4px solid #ff0;
-        border-right: 4px solid #ff0;
+        border-bottom: 4px solid $grey;
+        border-right: 4px solid $grey;
     }
 }
 

@@ -17,6 +17,7 @@ import others from "../images/empty.png";
 import { LanguageContext } from "../contexts/LanguageContext";
 import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../contexts/ProductContext";
+import { Footer } from "../components/layout/Footer";
 
 const bannerContent = [
     {
@@ -180,6 +181,7 @@ export const CategoryInner = () => {
                     })}
                 </div>
             </div>
+            <Footer />
         </main>
     );
 };

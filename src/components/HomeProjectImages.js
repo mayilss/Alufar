@@ -39,9 +39,13 @@ export const HomeProjectImages = ({ projects, indexState }) => {
                         return (
                             <div
                                 key={item.id}
-                                className="item"
+                                className={"item " + styles.imgHolder}
                                 onClick={() => {
-                                    setIndex(index);
+                                    setIndex(0);
+                                    [images[0], images[index]] = [
+                                        { ...images[index] },
+                                        { ...images[0] },
+                                    ];
                                 }}
                             >
                                 <img
@@ -52,6 +56,9 @@ export const HomeProjectImages = ({ projects, indexState }) => {
                                     }
                                     alt="projects"
                                 />
+                                <div className={styles.content}>
+                                    <p>{item.title}</p>
+                                </div>
                             </div>
                         );
                     })}

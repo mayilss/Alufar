@@ -9,6 +9,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { ProjectContext } from "../contexts/ProjectContext";
 import scroll from "../icons/arrow-left.svg";
+import { Footer } from "../components/layout/Footer";
 
 export const ProjectDetails = () => {
     const [project, setProject] = useState({});
@@ -67,50 +68,53 @@ export const ProjectDetails = () => {
     };
 
     return (
-        <main className="pd-wrapper">
-            <div id="pd-banner" className="pd-banner">
-                <img
-                    src={
-                        process.env.REACT_APP_API_URL +
-                        "/storage/" +
-                        project.image
-                    }
-                    alt="pd banner"
-                />
-                <div className="pd-contentWrapper">
-                    <div className="pd-content">
-                        <h2>{project.title}</h2>
-                        <div className="pd-text">
-                            <div
-                                dangerouslySetInnerHTML={createMarkup(
-                                    project.description
-                                )}
+        <>
+            <main className="pd-wrapper">
+                <div id="pd-banner" className="pd-banner">
+                    <img
+                        src={
+                            process.env.REACT_APP_API_URL +
+                            "/storage/" +
+                            project.image
+                        }
+                        alt="pd banner"
+                    />
+                    <div className="pd-contentWrapper">
+                        <div className="pd-content">
+                            <h2>{project.title}</h2>
+                            <div className="pd-text">
+                                <div
+                                    dangerouslySetInnerHTML={createMarkup(
+                                        project.description
+                                    )}
+                                />
+                                <p>{project.project_date}</p>
+                            </div>
+                        </div>
+                        <div className="pd-btnHolder">
+                            <Button
+                                content="Sonraki proyekt"
+                                click={handleNextProject}
                             />
-                            <p>{project.project_date}</p>
                         </div>
                     </div>
-                    <div className="pd-btnHolder">
-                        <Button
-                            content="Sonraki proyekt"
-                            click={handleNextProject}
-                        />
-                    </div>
                 </div>
-            </div>
-            <div className="container">
-                {project.gallery !== "[]" ? (
-                    <Masonry
-                        breakpointCols={2}
-                        className="my-masonry-grid my-4"
-                        columnClassName="my-masonry-grid_column"
-                    >
-                        {gallery}
-                    </Masonry>
-                ) : null}
-            </div>
-            <a className="scrollTop" href="#pd-banner">
-                <img src={scroll} alt="scroll" />
-            </a>
-        </main>
+                <div className="container">
+                    {project.gallery !== "[]" ? (
+                        <Masonry
+                            breakpointCols={2}
+                            className="my-masonry-grid my-4"
+                            columnClassName="my-masonry-grid_column"
+                        >
+                            {gallery}
+                        </Masonry>
+                    ) : null}
+                </div>
+                <a className="scrollTop" href="#pd-banner">
+                    <img src={scroll} alt="scroll" />
+                </a>
+            </main>
+            <Footer />
+        </>
     );
 };

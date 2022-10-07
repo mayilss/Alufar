@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { LanguageContext } from "../contexts/LanguageContext";
 import { useState } from "react";
+import { Footer } from "../components/layout/Footer";
 
 export const SearchResults = () => {
     const [value, setValue] = useState("");
@@ -77,6 +78,7 @@ export const SearchResults = () => {
                         );
                     })}
             </div>
+            <Footer />
         </main>
     );
 };

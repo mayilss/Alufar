@@ -13,7 +13,7 @@ import { useState } from "react";
 // import { LanguageContext } from "../../contexts/LanguageContext";
 // import { useContext } from "react";
 
-const Footer = () => {
+export const Footer = () => {
     // const [subCategories, setSubCategories] = useState([]);
     // const { lang } = useContext(LanguageContext);
 
@@ -124,5 +124,3 @@ const Footer = () => {
         </footer>
     );
 };
-
-export default Footer;
