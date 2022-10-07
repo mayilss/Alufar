@@ -1,16 +1,15 @@
-import { Link, useNavigate } from "react-router-dom";
-import { NavItem } from "../NavItem";
-// import axios from "axios";
-
 import styles from "../../styles/Navbar.module.scss";
 
-import logo from "../../icons/logo.svg";
 import mobile from "../../icons/mobile-menu.svg";
 import x from "../../icons/x.svg";
+import logo from "../../icons/logo.svg";
+
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-// import { useEffect } from "react";
 import { useContext } from "react";
+
 import { LanguageContext } from "../../contexts/LanguageContext";
+import { NavItem } from "../NavItem";
 
 export const Navbar = () => {
     const { lang } = useContext(LanguageContext);
@@ -21,6 +20,9 @@ export const Navbar = () => {
         <a
             onClick={(e) => {
                 e.stopPropagation();
+                if (mobileActive) {
+                    return;
+                }
                 navigate("/");
             }}
             href="#alsys"

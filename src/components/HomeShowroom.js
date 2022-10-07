@@ -29,7 +29,7 @@ export const HomeShowroom = ({ name }) => {
                     <source
                         src={
                             process.env.REACT_APP_API_URL +
-                            `/alufar-showroom.mp4`
+                            `/alufar-showroom-resized.mp4`
                         }
                         type="video/mp4"
                     ></source>

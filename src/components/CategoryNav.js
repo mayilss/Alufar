@@ -58,7 +58,6 @@ export const CategoryNav = ({ subSlug }) => {
             </button>
         );
     });
-    // }
 
     return (
         <div className="container">

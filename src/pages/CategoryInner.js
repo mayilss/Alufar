@@ -19,6 +19,10 @@ import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../contexts/ProductContext";
 import { Footer } from "../components/layout/Footer";
 
+if (!sessionStorage.getItem("subCategorySlug")) {
+    sessionStorage.setItem("subCategorySlug", "");
+}
+
 const bannerContent = [
     {
         img: bg,
@@ -51,6 +55,7 @@ export const CategoryInner = () => {
     const [category, setCategory] = useState("");
     const [isActive, setIsActive] = useState("");
     const [subCategories, setSubCategories] = useState([]);
+    const [categoryParam, setCategoryParam] = useState("");
 
     const { slugChanged, getInnerPage } = useContext(CategoryContext);
     const { lang } = useContext(LanguageContext);
@@ -60,33 +65,39 @@ export const CategoryInner = () => {
 
     useEffect(() => {
         setCategory(sessionStorage.getItem("categorySlug"));
+        setIsActive(sessionStorage.getItem("subCategorySlug"));
     }, [slugChanged]);
     useEffect(() => {
         const cancelToken = axios.CancelToken.source();
+        if (isActive === "" && category === "") {
+            setCategoryParam("");
+        } else if (isActive === "") {
+            setCategoryParam("category=" + category + "&");
+        } else {
+            setCategoryParam("category=" + isActive + "&");
+        }
         const fetchProducts = async () => {
             await axios(
                 process.env.REACT_APP_API_URL +
                     `/api/products?lang=az&${
-                        isActive === ""
-                            ? // ? "category=" + category + "&"
-                              ""
-                            : "category=" + isActive + "&"
+                        // isActive === ""
+                        //     ? "category=" + category + "&"
+                        //     : "category=" + isActive + "&"
+                        categoryParam
                     }item=12`
             )
                 .then((res) => {
                     setProducts(res.data.data.products);
                 })
                 .catch((err) => {
-                    if (axios.isCancel(err)) {
-                        return;
-                    }
+                    return;
                 });
         };
         fetchProducts();
         return () => {
             cancelToken.cancel();
         };
-    }, [isActive, category]);
+    }, [isActive, category, categoryParam]);
     useEffect(() => {
         const cancelToken = axios.CancelToken.source();
         const fetchSubCategories = async () => {

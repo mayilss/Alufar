@@ -76,11 +76,6 @@ export const NavItem = ({ title, slug }) => {
                                   return (
                                       <div
                                           key={item.id}
-                                          onClick={(e) => {
-                                              e.stopPropagation();
-                                              getInnerPage(item.slug);
-                                              navigate("/category");
-                                          }}
                                           className={styles.dropdownItem}
                                           onMouseEnter={() => {
                                               if (item.image) {
@@ -98,7 +93,19 @@ export const NavItem = ({ title, slug }) => {
                                               setImg(empty);
                                           }}
                                       >
-                                          <h4>{item.name}</h4>
+                                          <h4
+                                              onClick={(e) => {
+                                                  e.stopPropagation();
+                                                  getInnerPage(item.slug);
+                                                  navigate("/category");
+                                                  sessionStorage.setItem(
+                                                      "subCategorySlug",
+                                                      ""
+                                                  );
+                                              }}
+                                          >
+                                              {item.name}
+                                          </h4>
                                           <ul>
                                               <DropdownSubItem
                                                   key={item.id}

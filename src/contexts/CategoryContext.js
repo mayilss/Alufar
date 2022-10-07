@@ -37,10 +37,14 @@ export const CategoryProvider = ({ children }) => {
         sessionStorage.setItem("categorySlug", slug);
         setSlugChanged(!slugChanged);
     };
+    const getInnerSub = (slug) => {
+        sessionStorage.setItem("subCategorySlug", slug);
+        setSlugChanged(!slugChanged);
+    };
 
     return (
         <CategoryContext.Provider
-            value={{ categories, slugChanged, getInnerPage }}
+            value={{ categories, slugChanged, getInnerPage, getInnerSub }}
         >
             {children}
         </CategoryContext.Provider>
