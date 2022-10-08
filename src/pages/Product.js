@@ -75,7 +75,7 @@ export const Product = () => {
     return (
         <main className={styles.page}>
             <div className="container">
-                <div className={styles.wrapper}>
+                <div className={styles.wrapper + " mb-5"}>
                     <div className="row">
                         <div className="col-sm-5 col-12">
                             <div className={styles.imgHolder}>
@@ -112,7 +112,7 @@ export const Product = () => {
                         </div>
                     </div>
                 </div>
-                <div className={styles.similar}>
+                <div className={similarProducts ? styles.similar : "d-none"}>
                     <SimpleTitle title="Oxşar məhsullar" />
                     <div className="row">
                         {similarProducts &&

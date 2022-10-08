@@ -122,7 +122,16 @@ export const NavItem = ({ title, slug }) => {
             {subCategories.length !== 0 && window.innerWidth < 768 && subActive
                 ? subCategories.map((item) => {
                       return (
-                          <div className={styles.navItem} key={item.id}>
+                          <div
+                              onClick={(e) => {
+                                  e.stopPropagation();
+                                  getInnerPage(item.slug);
+                                  navigate("/category");
+                                  sessionStorage.setItem("subCategorySlug", "");
+                              }}
+                              className={styles.navItem}
+                              key={item.id}
+                          >
                               <h4>{item.name}</h4>
                           </div>
                       );

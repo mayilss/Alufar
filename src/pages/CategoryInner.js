@@ -19,10 +19,6 @@ import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../contexts/ProductContext";
 import { Footer } from "../components/layout/Footer";
 
-if (!sessionStorage.getItem("subCategorySlug")) {
-    sessionStorage.setItem("subCategorySlug", "");
-}
-
 const bannerContent = [
     {
         img: bg,
@@ -97,7 +93,7 @@ export const CategoryInner = () => {
         return () => {
             cancelToken.cancel();
         };
-    }, [isActive, category, categoryParam]);
+    }, [isActive, category, categoryParam, slugChanged]);
     useEffect(() => {
         const cancelToken = axios.CancelToken.source();
         const fetchSubCategories = async () => {
