@@ -99,11 +99,27 @@ main {
     html {
         font-size: 6px;
     }
+    .panel:nth-child(1){
+        height: 70%;
+    }
 }
 
 @media screen and (max-width: 576px) {
     html {
         font-size: 5px;
+    }
+    .panel:nth-child(1){
+        height: 60%;
+    }
+}
+@media screen and (max-width: 500px) {
+    .panel:nth-child(1){
+        height: 50%;
+    }
+}
+@media screen and (max-width: 400px) {
+    .panel:nth-child(1){
+        height: 40%;
     }
 }
 .leaflet-container {

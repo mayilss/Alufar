@@ -12,3 +12,8 @@
     position: sticky;
     top: 0;
 }
+@media screen and (max-width: 767px) {
+    .wrapper{
+        max-height: 150vh;
+    }
+}

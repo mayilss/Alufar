@@ -35,7 +35,7 @@ export const FAQs = () => {
     }
 
     return (
-        <main className={styles.wrapper}>
+        <main className={styles.wrapper + ' pt-5'}>
             <Banner item={{ ...item }} />
             <div className={styles.questionHolder}>{content}</div>
             <Footer />

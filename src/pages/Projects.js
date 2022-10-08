@@ -9,7 +9,7 @@ export const Projects = () => {
     const { projects, getDetails } = useContext(ProjectContext);
 
     const margin = {
-        marginTop: "15rem",
+        marginTop: "18rem",
         textAlign: "center",
     };
 
