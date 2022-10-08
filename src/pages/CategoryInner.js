@@ -46,12 +46,12 @@ const bannerContent = [
     },
 ];
 
+
 export const CategoryInner = () => {
     const [products, setProducts] = useState([]);
     const [category, setCategory] = useState("");
     const [isActive, setIsActive] = useState("");
     const [subCategories, setSubCategories] = useState([]);
-    const [categoryParam, setCategoryParam] = useState("");
 
     const { slugChanged, getInnerPage } = useContext(CategoryContext);
     const { lang } = useContext(LanguageContext);
@@ -65,21 +65,13 @@ export const CategoryInner = () => {
     }, [slugChanged]);
     useEffect(() => {
         const cancelToken = axios.CancelToken.source();
-        if (isActive === "" && category === "") {
-            setCategoryParam("");
-        } else if (isActive === "") {
-            setCategoryParam("category=" + category + "&");
-        } else {
-            setCategoryParam("category=" + isActive + "&");
-        }
         const fetchProducts = async () => {
             await axios(
                 process.env.REACT_APP_API_URL +
                     `/api/products?lang=az&${
-                        // isActive === ""
-                        //     ? "category=" + category + "&"
-                        //     : "category=" + isActive + "&"
-                        categoryParam
+                        isActive === ""
+                            ? "category=" + category + "&"
+                            : "category=" + isActive + "&"
                     }item=12`
             )
                 .then((res) => {
@@ -93,7 +85,7 @@ export const CategoryInner = () => {
         return () => {
             cancelToken.cancel();
         };
-    }, [isActive, category, categoryParam, slugChanged]);
+    }, [isActive, category, slugChanged]);
     useEffect(() => {
         const cancelToken = axios.CancelToken.source();
         const fetchSubCategories = async () => {
@@ -116,13 +108,18 @@ export const CategoryInner = () => {
         };
     }, [lang]);
     let item;
-    if (category === "architectural-systems-1") {
+    let isParent = subCategories.map(item => {
+        console.log(item.slug)
+        return item.slug
+    }).includes(isActive)
+    console.log(isParent)
+    if (category === "architectural-systems-1" || isParent) {
         item = { ...bannerContent[0] };
-    } else if (category === "furniture-systems-1") {
+    } else if (category === "furniture-systems-1" || isParent) {
         item = { ...bannerContent[1] };
-    } else if (category === "industry-profiles-1") {
+    } else if (category === "industry-profiles-1" || isParent) {
         item = { ...bannerContent[2] };
-    } else if (category === "other-systems-1") {
+    } else if (category === "other-systems-1" || isParent) {
         item = { ...bannerContent[3] };
     }
 

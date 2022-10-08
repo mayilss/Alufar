@@ -15,14 +15,14 @@ export const ProjectDetails = () => {
     const [project, setProject] = useState({});
     const [gallery, setGallery] = useState([]);
     const [slugState, setSlugState] = useState("");
-    const { slugChanged, handleNextProject } = useContext(ProjectContext);
+    const { slugChanged, handleNextProject, handlePrevProject } = useContext(ProjectContext);
 
     useEffect(() => {
         const cancelToken = axios.CancelToken.source();
         const fetchProject = async () => {
             await axios(
                 process.env.REACT_APP_API_URL +
-                    `/api/projects${slugState}?lang=az`
+                `/api/projects${slugState}?lang=az`
             )
                 .then((res) => {
                     setProject(res.data.data);
@@ -69,8 +69,9 @@ export const ProjectDetails = () => {
 
     return (
         <>
-            <main className="pd-wrapper">
-                <div id="pd-banner" className="pd-banner">
+            <main  className="pd-wrapper">
+                <div id="pd-banner"></div>
+                <div className="pd-banner">
                     <img
                         src={
                             process.env.REACT_APP_API_URL +
@@ -93,7 +94,11 @@ export const ProjectDetails = () => {
                         </div>
                         <div className="pd-btnHolder">
                             <Button
-                                content="Sonraki proyekt"
+                                content="Əvvəlki"
+                                click={handlePrevProject}
+                            />
+                            <Button
+                                content="Sonraki"
                                 click={handleNextProject}
                             />
                         </div>

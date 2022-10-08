@@ -40,6 +40,7 @@ export const DropdownSubItem = ({ slug }) => {
                         onClick={(e) => {
                             e.stopPropagation();
                             getInnerSub(item.slug);
+                            sessionStorage.setItem("categorySlug", slug);
                             navigate("/category");
                         }}
                         key={item.id}

@@ -1,6 +1,6 @@
 import styles from "../styles/Button.module.scss";
 
-export const Button = ({ content, click, args }) => {
+export const Button = ({ noHover, content, click, args }) => {
     return (
         <button
             onClick={
@@ -14,7 +14,7 @@ export const Button = ({ content, click, args }) => {
                           return;
                       }
             }
-            className={styles.button}
+            className={!noHover ? styles.buttonHover : styles.button}
         >
             {content}
         </button>

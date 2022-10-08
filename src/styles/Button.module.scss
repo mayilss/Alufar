@@ -13,6 +13,25 @@
     line-height: 2rem;
     transition: 0.5s;
     color: #000000;
+    &:hover{
+        transform: scale(1.03);
+    }
+    
+}
+
+.buttonHover{
+    background-color: $yellow;
+    padding: 1.2rem 2.7rem;
+    width: 100%;
+    text-align: center;
+    border: none;
+    outline: none;
+
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    transition: 0.5s;
+    color: #000000;
     &:hover {
         background: $yellow;
         color: #fff;

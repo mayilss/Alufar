@@ -69,7 +69,7 @@ export const HomeAlSys = ({ name }) => {
                     link="/category"
                     content="Alüminium sistemlər"
                 />
-                <div className="row py-4 gy-4">
+                <div className="row py-5 gy-4">
                     {subCategories.map((item, index) => {
                         return (
                             <div

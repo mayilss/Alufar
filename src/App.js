@@ -22,6 +22,10 @@ import { ProductProvider } from "./contexts/ProductContext";
 import { SearchResults } from "./pages/SearchResults";
 import { SearchProvider } from "./contexts/SearchContext";
 
+
+sessionStorage.setItem("categorySlug", '');
+sessionStorage.setItem("subCategorySlug", '');
+
 function App() {
     return (
         <div className="App">

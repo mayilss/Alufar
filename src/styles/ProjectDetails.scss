@@ -3,6 +3,10 @@
 .pd-Wrapper {
     position: relative;
 }
+#pd-banner{
+    position: absolute;
+    top:-128px;
+}
 .scrollTop {
     position: fixed;
     bottom: 3rem;
@@ -79,6 +83,8 @@
 
 .pd-btnHolder {
     position: absolute;
+    display: flex;
+    column-gap: 1rem;
     right: 16rem;
     bottom: 5.5rem;
     max-width: 20rem;

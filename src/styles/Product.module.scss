@@ -15,6 +15,12 @@
     img {
         width: 100%;
         object-fit: cover;
+        max-height: 43.8rem;
+        transition: 0.3s ease;
+
+        &:hover{
+            transform: scale(1.05);
+        }
     }
 }
 

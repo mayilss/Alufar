@@ -48,9 +48,23 @@ export const ProjectProvider = ({ children }) => {
         setSlugChanged(!slugChanged);
     };
 
+    const handlePrevProject = () => {
+        const slugs = projects.map((item) => {
+            return item.slug;
+        });
+        let current = sessionStorage.getItem("slug");
+        let i = slugs.indexOf(current);
+        if (i < slugs.length - 1) {
+            sessionStorage.setItem("slug", slugs[i - 1]);
+        } else {
+            sessionStorage.setItem("slug", slugs[0]);
+        }
+        setSlugChanged(!slugChanged);
+    };
+
     return (
         <ProjectContext.Provider
-            value={{ projects, slugChanged, getDetails, handleNextProject }}
+            value={{ projects, slugChanged, getDetails, handleNextProject, handlePrevProject }}
         >
             {children}
         </ProjectContext.Provider>

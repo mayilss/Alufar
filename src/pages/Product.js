@@ -72,6 +72,15 @@ export const Product = () => {
         setSlug(slug);
     };
 
+    const navigateCatalog = () => {
+        window.open(
+            process.env.REACT_APP_API_URL +
+                                        "/storage/" +
+                                        product.catalog_link,
+            "_blank"
+        );
+    };
+
     return (
         <main className={styles.page}>
             <div className="container">
@@ -97,17 +106,11 @@ export const Product = () => {
                                         product.description
                                     )}
                                 />
-                                <a
-                                    target="blank"
-                                    href={
-                                        process.env.REACT_APP_API_URL +
-                                        "/storage/" +
-                                        product.catalog_link
-                                    }
+                                <div
                                     className={styles.btnHolder}
                                 >
-                                    <Button content="Kataloqa bax" />
-                                </a>
+                                    <Button click={navigateCatalog} noHover content="Kataloqa bax" />
+                                </div>
                             </div>
                         </div>
                     </div>
