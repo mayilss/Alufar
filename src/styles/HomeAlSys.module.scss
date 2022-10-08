@@ -34,3 +34,11 @@
         transform: translateY(0);
     }
 }
+@media screen and (max-width: 500px) {
+    .textAnimation {
+        animation: slideIn 0.8s ease;
+    }
+    .textAnimationFirst {
+        animation: slideInFirst 0.8s ease;
+    }
+}
