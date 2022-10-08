@@ -18,6 +18,7 @@ export const HomeAlSys = ({ name }) => {
     const navigate = useNavigate();
 
     const targetRef = useRef(null);
+    const cardRef = useRef(null);
     const isVisible = useElementOnScreen(
         {
             root: null,
@@ -26,6 +27,14 @@ export const HomeAlSys = ({ name }) => {
         },
         targetRef
     );
+    const cardIsVisible = useElementOnScreen(
+        {
+            root: null,
+            rootMargin: "0px",
+            treshold: 0.3,
+        },
+        cardRef
+    )
 
     useEffect(() => {
         const cancelToken = axios.CancelToken.source();
@@ -61,7 +70,7 @@ export const HomeAlSys = ({ name }) => {
                     content="Alüminium sistemlər"
                 />
                 <div className="row py-4 gy-4">
-                    {subCategories.map((item) => {
+                    {subCategories.map((item, index) => {
                         return (
                             <div
                                 key={item.id}
@@ -72,6 +81,10 @@ export const HomeAlSys = ({ name }) => {
                                 className="col-6 col-md-3"
                             >
                                 <AlSysCard
+                                pName={styles.textAnimation}
+                                hName={styles.textAnimationFirst}
+                                visibility={cardIsVisible}
+                                selector={cardRef}
                                     img={
                                         process.env.REACT_APP_API_URL +
                                         "/storage/" +

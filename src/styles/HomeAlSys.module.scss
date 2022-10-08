@@ -11,3 +11,26 @@
     position: absolute;
     bottom: 128px;
 }
+.textAnimation {
+    animation: slideIn 1.5s ease;
+}
+.textAnimationFirst {
+    animation: slideInFirst 1.5s ease;
+}
+
+@keyframes slideIn {
+    0%{
+        transform: translateX(1000px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+@keyframes slideInFirst {
+    0%{
+        transform: translateY(-1000px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}

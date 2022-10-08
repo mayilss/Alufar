@@ -5,5 +5,35 @@
     padding-top: 50px;
     video {
         height: calc(100vh - 128px - 10rem);
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.slider {
+    width: 85%;
+    margin: 3rem auto;
+}
+
+.prev {
+    position: absolute;
+    z-index: 100;
+    left: -11rem;
+    width: 5rem;
+}
+.next {
+    position: absolute;
+    z-index: 100;
+    right: -11rem;
+    width: 5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .prev,
+    .next {
+        display: none;
+    }
+    .slider {
+        width: 100%;
     }
 }
