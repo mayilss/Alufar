@@ -1,11 +1,11 @@
 .wrapper {
-    overflow: hidden;
+    // overflow: hidden;
     position: relative;
     video {
         width: 100%;
         object-fit: cover;
         height: calc(100vh - 129px - 2rem);
-        position: fixed;
+        position: absolute;
     }
 }
 .contentHolder {
@@ -69,10 +69,10 @@
             height: auto;
         }
     }
-    .contentHolder{
+    .contentHolder {
         height: 42rem;
     }
-    .content{
+    .content {
         height: 42rem;
     }
 }

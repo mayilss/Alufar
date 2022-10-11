@@ -9,6 +9,10 @@ html {
     font-family: "Montserrat", sans-serif;
     scroll-behavior: smooth;
 }
+body {
+    height: 100vh !important;
+    width: 100vw !important;
+}
 main {
     margin-top: 12.8rem !important;
 }
@@ -85,7 +89,7 @@ main {
     z-index: 1000;
     background-color: #f4f4f4;
     &:nth-child(1) {
-        height: 100%;
+        height: calc(100vh - 129px - 2rem);
     }
 }
 
@@ -99,7 +103,7 @@ main {
     html {
         font-size: 6px;
     }
-    .panel:nth-child(1){
+    .panel:nth-child(1) {
         height: 70%;
     }
 }
@@ -108,17 +112,17 @@ main {
     html {
         font-size: 5px;
     }
-    .panel:nth-child(1){
+    .panel:nth-child(1) {
         height: 60%;
     }
 }
 @media screen and (max-width: 500px) {
-    .panel:nth-child(1){
+    .panel:nth-child(1) {
         height: 50%;
     }
 }
 @media screen and (max-width: 400px) {
-    .panel:nth-child(1){
+    .panel:nth-child(1) {
         height: 40%;
     }
 }
