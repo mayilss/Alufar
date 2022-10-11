@@ -21,7 +21,6 @@ import { CategoryProvider } from "./contexts/CategoryContext";
 import { ProductProvider } from "./contexts/ProductContext";
 import { SearchResults } from "./pages/SearchResults";
 import { SearchProvider } from "./contexts/SearchContext";
-import { Scroll } from "./components/SmoothScroll";
 
 sessionStorage.setItem("categorySlug", "");
 sessionStorage.setItem("subCategorySlug", "");
@@ -29,7 +28,6 @@ sessionStorage.setItem("subCategorySlug", "");
 function App() {
     return (
         <div className="App">
-            <Scroll />
             <LanguageProvider>
                 <SearchProvider>
                     <CategoryProvider>
