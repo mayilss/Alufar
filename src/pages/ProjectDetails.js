@@ -63,13 +63,9 @@ export const ProjectDetails = () => {
         setSlugState("/" + sessionStorage.getItem("slug"));
     }, [slugChanged]);
 
-    const createMarkup = (body) => {
-        return { __html: body };
-    };
-
     return (
         <>
-            <main  className="pd-wrapper">
+            <main className="pd-wrapper">
                 <div id="pd-banner"></div>
                 <div className="pd-banner">
                     <img
@@ -84,11 +80,8 @@ export const ProjectDetails = () => {
                         <div className="pd-content">
                             <h2>{project.title}</h2>
                             <div className="pd-text">
-                                <div
-                                    dangerouslySetInnerHTML={createMarkup(
-                                        project.description
-                                    )}
-                                />
+                                <p
+                                >{project.description}</p>
                                 <p>{project.project_date}</p>
                             </div>
                         </div>

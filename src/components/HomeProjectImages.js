@@ -3,12 +3,16 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
 import styles from "../styles/HomeProjectImages.module.scss";
+import '../App.scss'
 import { useState } from "react";
 import { useEffect } from "react";
 
 const options = {
     loop: true,
-    dots: false,
+    dots: true,
+    dotsEach: true,
+    autoplay: true,
+    autoplayTimeout: 3000,
     responsive: {
         0: {
             items: 2,
@@ -23,6 +27,9 @@ const options = {
 };
 
 export const HomeProjectImages = ({ projects, indexState }) => {
+
+
+
     const [images, setImages] = useState([]);
     const { setIndex } = indexState;
     useEffect(() => {
@@ -41,11 +48,11 @@ export const HomeProjectImages = ({ projects, indexState }) => {
                                 key={item.id}
                                 className={"item " + styles.imgHolder}
                                 onClick={() => {
-                                    setIndex(0);
-                                    [images[0], images[index]] = [
-                                        { ...images[index] },
-                                        { ...images[0] },
-                                    ];
+                                    setIndex(index);
+                                    // [images[0], images[index]] = [
+                                    //     { ...images[index] },
+                                    //     { ...images[0] },
+                                    // ];
                                 }}
                             >
                                 <img

@@ -3,16 +3,19 @@
 .pd-Wrapper {
     position: relative;
 }
-#pd-banner{
+
+#pd-banner {
     position: absolute;
-    top:-128px;
+    top: -128px;
 }
+
 .scrollTop {
     position: fixed;
     bottom: 3rem;
     right: 3rem;
     background-color: $yellow;
-    animation: beat 0.7s infinite ;
+    animation: beat 0.7s infinite;
+
     img {
         width: 5rem;
         transform: rotate(90deg);
@@ -38,6 +41,7 @@
 
 .pd-banner {
     position: relative;
+
     img {
         max-height: 500px;
         width: 100%;
@@ -66,6 +70,7 @@
         line-height: 6.1rem;
         color: #ffffff;
     }
+
 }
 
 .pd-text {
@@ -94,6 +99,7 @@
     html {
         font-size: 4px;
     }
+
     .pd-btnHolder {
         position: absolute;
         right: 10rem;
@@ -103,16 +109,16 @@
 }
 
 @keyframes beat {
-        0% {
-            transform: scale(1.1);
-        }
-    
-        50% {
-            transform: scale(1.0);
-        }
-    
-        100%{
-            transform: scale(1.1);
-        }
-    
+    0% {
+        transform: scale(1.1);
     }
+
+    50% {
+        transform: scale(1.0);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+
+}

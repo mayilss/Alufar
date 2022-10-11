@@ -1,3 +1,5 @@
+@import '../App.scss';
+
 .wrapper {
     width: 100%;
     position: relative;
@@ -45,4 +47,7 @@
             display: none;
         }
     }
+}
+.projectDots{
+    background-color: $yellow;
 }

@@ -95,6 +95,9 @@ main {
     }
 }
 
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+    background-color: #ffd600 !important; }
+
 @media screen and (max-width: 992px) {
     html {
         font-size: 8px;
