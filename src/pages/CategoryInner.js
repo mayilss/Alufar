@@ -167,6 +167,10 @@ export const CategoryInner = () => {
                             <div
                                 onClick={() => {
                                     getInnerPage(item.slug);
+                                    sessionStorage.setItem(
+                                        "subCategorySlug",
+                                        ""
+                                    );
                                 }}
                                 key={item.id}
                                 className="col-3"
