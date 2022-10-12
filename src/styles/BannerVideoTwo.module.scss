@@ -2,7 +2,8 @@
 
 .wrapper{
     width: 100%;
-    height: calc(100vh - 128px);
+    // height: calc(100vh - 128px);
+    scroll-margin-top: 129px;
     overflow: hidden;
     position: relative;
     scroll-snap-align: center;

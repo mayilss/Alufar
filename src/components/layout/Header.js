@@ -5,12 +5,10 @@ export const Header = () => {
     return (
         <header
             style={{
-                position: "fixed",
+                position: "sticky",
                 width: "100%",
                 zIndex: 99999,
                 top: 0,
-                left: 0,
-                right: 0,
             }}
         >
             <HeaderTop />
