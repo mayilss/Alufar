@@ -1,8 +1,10 @@
+@import '../App.scss';
+
 .container{
     position: relative;
     overflow-y: auto;
     overscroll-behavior-y: contain;
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
     height: 100vh;
     width: 100%;
     -ms-overflow-style: none;
@@ -16,4 +18,5 @@
     height: 100vh;
     position: relative;
     scroll-snap-align: center;
+    background-color: $grey;
 }
