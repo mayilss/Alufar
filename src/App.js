@@ -5,6 +5,7 @@ import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 
 import { Home } from "./pages/Home";
+import { HomeTwo } from "./pages/HomeTwo";
 import { Header } from "./components/layout/Header";
 import { Contact } from "./pages/Contact";
 import { Projects } from "./pages/Projects";
@@ -39,7 +40,11 @@ function App() {
                                         path="/contact"
                                         element={<Contact />}
                                     />
-                                    <Route path="/" element={<Home />} />
+                                    {
+                                        window.innerWidth > 992 ?
+                                            <Route path="/" element={<HomeTwo />} /> :
+                                            <Route path="/" element={<Home />} />
+                                    }
                                     <Route
                                         path="/projects"
                                         element={<Projects />}

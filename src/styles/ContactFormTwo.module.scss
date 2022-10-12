@@ -1,0 +1,219 @@
+@import "../App.scss";
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: $grey;
+    border-bottom: 1px solid #ffffff;
+    padding: 3rem 0 2rem 0;
+    h2 {
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 2.5rem;
+        line-height: 2.2rem;
+    }
+}
+.innerForm {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    width: 80%;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0 0 0;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        row-gap: 4rem;
+        width: 100%;
+    }
+}
+
+.itemHolder {
+    display: flex;
+    justify-content: space-between;
+
+    .formItem {
+        width: 49%;
+    }
+}
+
+.formItem {
+    display: flex;
+    flex-direction: column-reverse;
+    row-gap: 8px;
+    position: relative;
+
+    label {
+        color: #ffffff;
+        font-weight: 500;
+        line-height: 2rem;
+        position: absolute;
+        font-size: 2rem;
+        top: 1.5rem;
+        left: 1.5rem;
+        cursor: text;
+    }
+
+    input {
+        height: 5rem;
+    }
+
+    input,
+    textarea {
+        background-color: transparent;
+        color: #ffffff;
+        font-size: 1.6rem;
+        border: none;
+        border-bottom: 1px solid #ffffff;
+        &:focus {
+            border-bottom: 1px solid $yellow;
+            outline: $yellow;
+        }
+        &:focus + label {
+            color: $yellow;
+            top: -2.5rem;
+            left: 0;
+            font-size: 1.6rem;
+        }
+    }
+}
+
+.btn {
+    align-self: end;
+}
+
+.dataItem {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    column-gap: 2rem;
+
+    img {
+        width: 2.4rem;
+    }
+
+    p {
+        font-weight: 500;
+        font-size: 1.8rem;
+        line-height: 2.2rem;
+        color: #ffffff;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .dataMobile {
+        display: none !important;
+    }
+    .formPage {
+        padding: 5rem 0 0 5rem !important;
+    }
+}
+
+//page
+
+.formPage {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 3rem 0 0 5rem;
+    .innerFormPage {
+        width: 90%;
+        .wrapper {
+            width: 100%;
+
+            form {
+                row-gap: 1.6rem;
+            }
+        }
+        form {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+        }
+    }
+}
+
+.itemHolderCol {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+
+    .formItem {
+        width: 100%;
+    }
+}
+
+.contactData {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 1.6rem;
+    padding-bottom: 2rem;
+}
+
+.dataItemPage {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    column-gap: 1rem;
+
+    img {
+        width: 1.8rem;
+    }
+
+    p {
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        color: #ffffff;
+    }
+}
+
+.formItemPage {
+    display: flex;
+    flex-direction: column-reverse;
+    row-gap: 8px;
+
+    label {
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 1.6rem;
+        line-height: 2rem;
+    }
+
+    input {
+        height: 3rem;
+    }
+
+    input,
+    textarea {
+        background-color: transparent;
+        color: #ffffff;
+        font-size: 1.6rem;
+        border: 1px solid #ffffff;
+        &:focus {
+            border: 1px solid $yellow;
+            outline: $yellow;
+        }
+        &:focus + label {
+            color: $yellow;
+        }
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    html {
+        font-size: 12px;
+    }
+}

@@ -137,7 +137,7 @@ export const CategoryInner = () => {
                                     navigate("/details");
                                 }}
                                 key={item.id}
-                                className="col-md-3 col-sm-6 col-12"
+                                className="col-md-3 col-6"
                             >
                                 <ProjectCard
                                     img={

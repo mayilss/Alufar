@@ -2,7 +2,7 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
-import styles from "../styles/HomeProjectImages.module.scss";
+import styles from "../styles/HomeProjectImagesTwo.module.scss";
 import '../App.scss'
 import { useState } from "react";
 import { useEffect } from "react";
@@ -21,22 +21,19 @@ const options = {
             items: 3,
         },
         1024: {
-            items: 4,
+            items: 6,
         },
     },
 };
 
-export const HomeProjectImages = ({ projects, indexState }) => {
-
-
-
+export const HomeProjectImagesTwo = ({ projects, indexState }) => {
     const [images, setImages] = useState([]);
     const { setIndex } = indexState;
     useEffect(() => {
         setImages(projects);
     }, [projects]);
     return (
-        <a href="#projects-top" className={styles.wrapper}>
+        <div className={styles.wrapper}>
             {images.length !== 0 && (
                 <OwlCarousel
                     className="owl-theme carousel-wrapper mt-4"
@@ -67,6 +64,6 @@ export const HomeProjectImages = ({ projects, indexState }) => {
                     })}
                 </OwlCarousel>
             )}
-        </a>
+        </div>
     );
 };

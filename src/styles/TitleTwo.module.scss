@@ -1,0 +1,76 @@
+@import '../App.scss';
+
+.title{
+    position: relative;
+    height: 30px;
+    margin-top: 1.6rem;
+
+    a {
+        text-align: center;
+        font-weight: 600;
+        font-size: 2.5rem;
+        line-height: 3.3rem;
+        position: absolute;
+        left: 50%;
+        top: 16px;
+        transform: translate(-50%, -50%);
+        padding: 1rem;
+        color: $grey;
+    }
+    .a::before,
+    .a::after,
+    .span::before,
+    .span::after {
+        content: "";
+        position: absolute;
+        background: transparent;
+        animation-name: hover;
+        animation-duration: 200s;
+        animation-iteration-count: infinite;
+    }
+
+    .a::before {
+        top: -2px;
+        left: -2px;
+        border-top: 4px solid $grey;
+        border-left: 4px solid $grey;
+    }
+
+    .a::after {
+        top: -2px;
+        right: -2px;
+        border-top: 4px solid $grey;
+        border-right: 4px solid $grey;
+    }
+
+    .span::before {
+        bottom: -2px;
+        left: -2px;
+        border-bottom: 4px solid $grey;
+        border-left: 4px solid $grey;
+    }
+
+    .span::after {
+        bottom: -2px;
+        right: -2px;
+        border-bottom: 4px solid $grey;
+        border-right: 4px solid $grey;
+    }
+}
+
+@keyframes hover {
+    0% {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    1% {
+        width: 55%;
+        height: 55%;
+    }
+
+    100% {
+        width: 100%;
+        height: 55%;
+    }
+}
