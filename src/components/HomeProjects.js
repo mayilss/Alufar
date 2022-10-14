@@ -34,7 +34,6 @@ export const HomeProjects = ({ name }) => {
         return { __html: body };
     };
 
-
     return (
         <div id="projects" className={styles.projects}>
             <div className="container mb-5">
@@ -56,10 +55,11 @@ export const HomeProjects = ({ name }) => {
                                     return (
                                         <div
                                             key={item.id}
-                                            className={`carousel-item slide ${item.id === projects[index].id
-                                                ? "active"
-                                                : ""
-                                                }`}
+                                            className={`carousel-item slide ${
+                                                item.id === projects[index].id
+                                                    ? "active"
+                                                    : ""
+                                            }`}
                                         >
                                             <div className={styles.sliderItem}>
                                                 <div className={styles.itemImg}>
@@ -85,7 +85,6 @@ export const HomeProjects = ({ name }) => {
                                                                 item.description
                                                             )}
                                                         />
-
                                                     </div>
                                                     <div
                                                         className={

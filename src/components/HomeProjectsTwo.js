@@ -30,6 +30,9 @@ export const HomeProjectsTwo = ({ name }) => {
         targetRef
     );
 
+    const createMarkup = (body) => {
+        return { __html: body };
+    };
 
     return (
         <div id="projects" className={styles.projects}>
@@ -78,7 +81,10 @@ export const HomeProjectsTwo = ({ name }) => {
                                                 >
                                                     <h2>{item.title}</h2>
                                                     <p
-                                                    >{item.description} </p>
+                                                        dangerouslySetInnerHTML={createMarkup(
+                                                            item.description
+                                                        )}
+                                                    />
                                                     <div
                                                         className={
                                                             styles.btnHolder

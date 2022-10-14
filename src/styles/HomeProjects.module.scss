@@ -46,6 +46,12 @@
         color: #ffffff;
         margin-bottom: 1.6rem;
     }
+
+    ul {
+        li {
+            list-style: disc;
+        }
+    }
 }
 .itemImg {
     height: inherit;
