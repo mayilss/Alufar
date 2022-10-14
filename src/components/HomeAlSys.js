@@ -34,7 +34,15 @@ export const HomeAlSys = ({ name }) => {
             treshold: 0.3,
         },
         cardRef
-    )
+    );
+    let title;
+    if (lang === "az") {
+        title = "Alüminium sistemləri";
+    } else if (lang === "en") {
+        title = "Aluminium Systems";
+    } else {
+        title = "Алюминиевые системы";
+    }
 
     useEffect(() => {
         const cancelToken = axios.CancelToken.source();
@@ -67,10 +75,10 @@ export const HomeAlSys = ({ name }) => {
                     visibility={isVisible}
                     selector={targetRef}
                     link="/category"
-                    content="Alüminium sistemlər"
+                    content={title}
                 />
                 <div className="row py-5 gy-4">
-                    {subCategories.map((item, index) => {
+                    {subCategories.map((item) => {
                         return (
                             <div
                                 key={item.id}
@@ -81,10 +89,10 @@ export const HomeAlSys = ({ name }) => {
                                 className="col-6 col-md-3"
                             >
                                 <AlSysCard
-                                pName={styles.textAnimation}
-                                hName={styles.textAnimationFirst}
-                                visibility={cardIsVisible}
-                                selector={cardRef}
+                                    pName={styles.textAnimation}
+                                    hName={styles.textAnimationFirst}
+                                    visibility={cardIsVisible}
+                                    selector={cardRef}
                                     img={
                                         process.env.REACT_APP_API_URL +
                                         "/storage/" +

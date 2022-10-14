@@ -1,13 +1,35 @@
+import { useContext } from "react";
+import { LanguageContext } from "../contexts/LanguageContext";
 import styles from "../styles/BannerVideo.module.scss";
 import { Button } from "./Button";
 
 export const BannerVideo = ({ name }) => {
+    const { lang } = useContext(LanguageContext);
+
     const navigateVideo = () => {
         window.open(
             "https://www.youtube.com/watch?v=l4hBNIwT3zM&t=1s",
             "_blank"
         );
     };
+
+    let title;
+    let legend;
+    let button;
+
+    if (lang === "az") {
+        title = "ALUFAR MMC";
+        legend = "DOĞRU VƏ ETİBARLI SEÇİM";
+        button = "Bax";
+    } else if (lang === "en") {
+        title = "ALUFAR LLC";
+        legend = "CORRECT AND RELIABLE CHOICE";
+        button = "Watch";
+    } else {
+        title = "АЛУФАР ООО";
+        legend = "ПРАВИЛЬНЫЙ И НАДЕЖНЫЙ ВЫБОР";
+        button = "Смотреть";
+    }
 
     return (
         <div className={styles.wrapper + " " + name}>
@@ -24,14 +46,14 @@ export const BannerVideo = ({ name }) => {
             </a>
             <div className={styles.content}>
                 <section>
-                    <h1>ALUFAR MMC</h1>
+                    <h1>{title}</h1>
                     <div className={styles.legend}>
                         <div className={styles.left}></div>
-                        <p>DOĞRU VƏ ETİBARLI SEÇİM</p>
+                        <p>{legend}</p>
                         <div className={styles.right}></div>
                     </div>
                     <div className={styles.btnHolder}>
-                        <Button click={navigateVideo} content="Bax" />
+                        <Button click={navigateVideo} content={button} />
                     </div>
                 </section>
             </div>

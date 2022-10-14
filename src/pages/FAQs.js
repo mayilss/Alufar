@@ -8,14 +8,33 @@ import styles from "../styles/FAQs.module.scss";
 
 import bg from "../images/faqs-bg.png";
 import { Footer } from "../components/layout/Footer";
-const item = {
-    img: bg,
-    title: "FAQ",
-    text: "Məhsullarımız və xidmətlərimizlə bağlı tez-tez verilən suallara tez bir zamanda aydın və ətraflı cavab tap.",
-};
+import { useContext } from "react";
+import { LanguageContext } from "../contexts/LanguageContext";
 
 export const FAQs = () => {
     const { isLoading, isError, error, data: faqs } = useQuery("faqs", getFaqs);
+    const { lang } = useContext(LanguageContext);
+
+    let item;
+    if (lang === "az") {
+        item = {
+            img: bg,
+            title: "FAQ",
+            text: "Məhsullarımız və xidmətlərimizlə bağlı tez-tez verilən suallara tez bir zamanda aydın və ətraflı cavab tap.",
+        };
+    } else if (lang === "en") {
+        item = {
+            img: bg,
+            title: "FAQ",
+            text: "Quickly find clear and detailed answers to frequently asked questions about our products and services.",
+        };
+    } else {
+        item = {
+            img: bg,
+            title: "FAQ",
+            text: "Быстро находите четкие и подробные ответы на часто задаваемые вопросы о наших продуктах и ​​услугах.",
+        };
+    }
 
     let content;
     if (isLoading) {

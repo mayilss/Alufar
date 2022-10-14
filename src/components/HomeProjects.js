@@ -15,9 +15,11 @@ import { HomeProjectImages } from "./HomeProjectImages";
 import { useState } from "react";
 import { useRef } from "react";
 import { useElementOnScreen } from "../hooks/useElementOnScreen";
+import { LanguageContext } from "../contexts/LanguageContext";
 
-export const HomeProjects = ({ name }) => {
+export const HomeProjects = () => {
     const { projects, getDetails } = useContext(ProjectContext);
+    const { lang } = useContext(LanguageContext);
     const [index, setIndex] = useState(0);
 
     const targetRef = useRef(null);
@@ -34,6 +36,19 @@ export const HomeProjects = ({ name }) => {
         return { __html: body };
     };
 
+    let title;
+    let button;
+    if (lang === "az") {
+        title = "Proyektlər";
+        button = "Ətraflı";
+    } else if (lang === "en") {
+        title = "Projects";
+        button = "More";
+    } else {
+        title = "Проекты";
+        button = "Больше";
+    }
+
     return (
         <div id="projects" className={styles.projects}>
             <div className="container mb-5">
@@ -41,7 +56,7 @@ export const HomeProjects = ({ name }) => {
                     <Title
                         visibility={isVisible}
                         selector={targetRef}
-                        content="Proyektlər"
+                        content={title}
                         link="/projects"
                     />
                     <div className={styles.slider}>
@@ -92,7 +107,7 @@ export const HomeProjects = ({ name }) => {
                                                         }
                                                     >
                                                         <Button
-                                                            content="Ətraflı"
+                                                            content={button}
                                                             click={getDetails}
                                                             args={item.slug}
                                                         />

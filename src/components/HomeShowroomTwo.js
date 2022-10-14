@@ -8,8 +8,11 @@ import arrowRight from "../icons/arrow-right.svg";
 // import empty from "../images/empty.png";
 
 import { TitleTwo } from "./TitleTwo";
+import { useContext } from "react";
+import { LanguageContext } from "../contexts/LanguageContext";
 
-export const HomeShowroomTwo = ({ name }) => {
+export const HomeShowroomTwo = () => {
+    const { lang } = useContext(LanguageContext);
     const targetRef = useRef(null);
     const isVisible = useElementOnScreen(
         {
@@ -19,13 +22,23 @@ export const HomeShowroomTwo = ({ name }) => {
         },
         targetRef
     );
+
+    let title;
+    if (lang === "az") {
+        title = "Video Qalereya";
+    } else if (lang === "en") {
+        title = "Video Gallery";
+    } else {
+        title = "Видеогалерея";
+    }
+
     return (
         <div className={styles.wrapper}>
             <div className={"container"}>
                 <TitleTwo
                     visibility={isVisible}
                     selector={targetRef}
-                    content="Video Qalereya"
+                    content={title}
                     link="/about"
                 />
                 <div className={styles.slider}>
@@ -35,9 +48,7 @@ export const HomeShowroomTwo = ({ name }) => {
                         data-bs-ride="carousel"
                     >
                         <div className="carousel-inner">
-                            <div
-                                className={`carousel-item slide active`}
-                            >
+                            <div className={`carousel-item slide active`}>
                                 <video autoPlay loop muted>
                                     <source
                                         src={
@@ -56,9 +67,7 @@ export const HomeShowroomTwo = ({ name }) => {
                             data-bs-slide="prev"
                         >
                             <img src={arrowLeft} alt="arrow-left" />
-                            <span className="visually-hidden">
-                                Previous
-                            </span>
+                            <span className="visually-hidden">Previous</span>
                         </button>
                         <button
                             className={`carousel-control-next ${styles.next}`}
@@ -71,7 +80,6 @@ export const HomeShowroomTwo = ({ name }) => {
                         </button>
                     </div>
                 </div>
-
             </div>
         </div>
     );

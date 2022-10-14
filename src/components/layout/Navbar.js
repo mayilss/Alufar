@@ -16,6 +16,31 @@ export const Navbar = () => {
     const [mobileActive, setMobileActive] = useState(false);
     const navigate = useNavigate();
 
+    const toggleMobileNav = () => {
+        setMobileActive(!mobileActive);
+    };
+
+    let projectTitle;
+    let aboutTitle;
+    let contactTitle;
+    let alSys;
+    if (lang === "az") {
+        projectTitle = "Proyektlər";
+        aboutTitle = "Haqqımızda";
+        contactTitle = "Əlaqə";
+        alSys = "Alüminium sistemləri";
+    } else if (lang === "en") {
+        projectTitle = "Projects";
+        aboutTitle = "About";
+        contactTitle = "Contact";
+        alSys = "Aluminium Systems";
+    } else {
+        projectTitle = "Проекты";
+        aboutTitle = "О нас";
+        contactTitle = "Контакт";
+        alSys = "Алюминиевые системы";
+    }
+
     const content = (
         <a
             onClick={(e) => {
@@ -27,30 +52,9 @@ export const Navbar = () => {
             }}
             href="#alsys"
         >
-            <NavItem title="Alüminium sistemləri" slug="aluminium-systems-1" />
+            <NavItem title={alSys} slug="aluminium-systems-1" />
         </a>
     );
-
-    const toggleMobileNav = () => {
-        setMobileActive(!mobileActive);
-    };
-
-    let projectTitle;
-    let aboutTitle;
-    let contactTitle;
-    if (lang === "az") {
-        projectTitle = "Proyektlər";
-        aboutTitle = "Haqqımızda";
-        contactTitle = "Əlaqə";
-    } else if (lang === "en") {
-        projectTitle = "Projects";
-        aboutTitle = "About";
-        contactTitle = "Contact";
-    } else {
-        projectTitle = "Проекты";
-        aboutTitle = "О нас";
-        contactTitle = "Контакт";
-    }
 
     return (
         <nav className={styles.wrapper}>

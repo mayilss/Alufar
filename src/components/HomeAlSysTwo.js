@@ -34,7 +34,16 @@ export const HomeAlSysTwo = ({ name }) => {
             treshold: 0.3,
         },
         cardRef
-    )
+    );
+
+    let title;
+    if (lang === "az") {
+        title = "Alüminium sistemləri";
+    } else if (lang === "en") {
+        title = "Aluminium Systems";
+    } else {
+        title = "Алюминиевые системы";
+    }
 
     useEffect(() => {
         const cancelToken = axios.CancelToken.source();
@@ -62,12 +71,12 @@ export const HomeAlSysTwo = ({ name }) => {
     return (
         <div className={styles.wrapper}>
             <div id="alsys"></div>
-            <div className='container'>
+            <div className="container">
                 <TitleTwo
                     visibility={isVisible}
                     selector={targetRef}
                     link="/category"
-                    content="Alüminium sistemlər"
+                    content={title}
                 />
                 <div className="row py-5 gy-4">
                     {subCategories.map((item, index) => {
@@ -81,10 +90,10 @@ export const HomeAlSysTwo = ({ name }) => {
                                 className="col-6 col-md-3"
                             >
                                 <AlSysCardTwo
-                                pName={styles.textAnimation}
-                                hName={styles.textAnimationFirst}
-                                visibility={cardIsVisible}
-                                selector={cardRef}
+                                    pName={styles.textAnimation}
+                                    hName={styles.textAnimationFirst}
+                                    visibility={cardIsVisible}
+                                    selector={cardRef}
                                     img={
                                         process.env.REACT_APP_API_URL +
                                         "/storage/" +

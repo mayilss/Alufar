@@ -8,6 +8,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { useRef } from "react";
+import { useContext } from "react";
+import { LanguageContext } from "../contexts/LanguageContext";
 
 export const ContactFormTwo = ({ contactPage, cName }) => {
     const [name, setName] = useState("");
@@ -15,6 +17,7 @@ export const ContactFormTwo = ({ contactPage, cName }) => {
     const [message, setMessage] = useState("");
     const [contacts, setContacts] = useState({});
     const [phones, setPhones] = useState([]);
+    const { lang } = useContext(LanguageContext);
 
     const nameInput = useRef();
     const mailInput = useRef();
@@ -65,6 +68,31 @@ export const ContactFormTwo = ({ contactPage, cName }) => {
         setMessage("");
     };
 
+    let title;
+    let nameLabel;
+    let emailLabel;
+    let messageLabel;
+    let button;
+    if (lang === "az") {
+        title = "Bizimlə Əlaqə";
+        nameLabel = "Ad və Soyad";
+        emailLabel = "Email";
+        messageLabel = "Mesaj";
+        button = "Göndər";
+    } else if (lang === "en") {
+        title = "Contact us";
+        nameLabel = "Name and surname";
+        emailLabel = "Email";
+        messageLabel = "Message";
+        button = "Send";
+    } else {
+        title = "Свяжитесь с нами";
+        nameLabel = "Имя и фамилия";
+        emailLabel = "Эл. адрес";
+        messageLabel = "Сообщение";
+        button = "Отправлять";
+    }
+
     return (
         <div
             className={
@@ -73,7 +101,7 @@ export const ContactFormTwo = ({ contactPage, cName }) => {
                     : styles.form + " " + cName
             }
         >
-            <h2>Bizimlə Əlaqə</h2>
+            <h2>{title}</h2>
             <div
                 className={
                     !contactPage ? styles.innerForm : styles.innerFormPage
@@ -110,7 +138,7 @@ export const ContactFormTwo = ({ contactPage, cName }) => {
                                         }}
                                         htmlFor="name"
                                     >
-                                        Ad və Soyad
+                                        {nameLabel}
                                     </label>
                                 </div>
                                 <div
@@ -134,7 +162,7 @@ export const ContactFormTwo = ({ contactPage, cName }) => {
                                         }}
                                         htmlFor="email"
                                     >
-                                        Email
+                                        {emailLabel}
                                     </label>
                                 </div>
                             </div>
@@ -146,7 +174,7 @@ export const ContactFormTwo = ({ contactPage, cName }) => {
                                 }
                             >
                                 <div className={styles.btn}>
-                                    <Button content="Göndər" />
+                                    <Button content={button} />
                                 </div>
                                 <textarea
                                     ref={messageInput}
@@ -164,7 +192,7 @@ export const ContactFormTwo = ({ contactPage, cName }) => {
                                     }}
                                     htmlFor="message"
                                 >
-                                    Mesaj
+                                    {messageLabel}
                                 </label>
                             </div>
                         </form>

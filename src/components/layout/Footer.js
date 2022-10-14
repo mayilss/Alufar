@@ -26,7 +26,7 @@ export const Footer = () => {
         const fetchSubCategories = async () => {
             await axios(
                 process.env.REACT_APP_API_URL +
-                `/api/categories/aluminium-systems-1?lang=${lang}`,
+                    `/api/categories/aluminium-systems-1?lang=${lang}`,
                 { cancelToken: cancelToken.token }
             )
                 .then((res) => {
@@ -34,7 +34,7 @@ export const Footer = () => {
                 })
                 .catch((err) => {
                     if (axios.isCancel(err)) {
-                        return
+                        return;
                     }
                 });
         };
@@ -64,6 +64,27 @@ export const Footer = () => {
         };
     }, []);
 
+    let projectTitle;
+    let aboutTitle;
+    let contactTitle;
+    let alSys;
+    if (lang === "az") {
+        projectTitle = "Proyektlər";
+        aboutTitle = "Haqqımızda";
+        contactTitle = "Əlaqə";
+        alSys = "Alüminium sistemləri";
+    } else if (lang === "en") {
+        projectTitle = "Projects";
+        aboutTitle = "About";
+        contactTitle = "Contact";
+        alSys = "Aluminium Systems";
+    } else {
+        projectTitle = "Проекты";
+        aboutTitle = "О нас";
+        contactTitle = "Контакт";
+        alSys = "Алюминиевые системы";
+    }
+
     return (
         <footer className={styles.wrapper}>
             <div className="container">
@@ -74,17 +95,21 @@ export const Footer = () => {
                         </Link>
                         <div className={styles.inner}>
                             <div className={styles.item}>
-                                <a onClick={(e) => { 
-                                    e.stopPropagation()
-                                    navigate('/');
-                                    }} href="#alsys">
-                                    <h4>Alüminium sistemlər</h4>
+                                <a
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        navigate("/");
+                                    }}
+                                    href="#alsys"
+                                >
+                                    <h4>{alSys}</h4>
                                 </a>
                                 <div>
                                     <ul>
                                         {subCategories.map((item) => {
                                             return (
-                                                <li key={item.id}
+                                                <li
+                                                    key={item.id}
                                                     onClick={(e) => {
                                                         e.stopPropagation();
                                                         getInnerPage(item.slug);
@@ -94,20 +119,22 @@ export const Footer = () => {
                                                             ""
                                                         );
                                                     }}
-                                                >{item.name}</li>
-                                            )
+                                                >
+                                                    {item.name}
+                                                </li>
+                                            );
                                         })}
                                     </ul>
                                 </div>
                             </div>
                             <div className={styles.item}>
                                 <h4>
-                                    <Link to="/projects">Proyektlər</Link>
+                                    <Link to="/projects">{projectTitle}</Link>
                                 </h4>
                             </div>
                             <div className={styles.item}>
                                 <h4>
-                                    <Link to="/about">Haqqımızda</Link>
+                                    <Link to="/about">{aboutTitle}</Link>
                                 </h4>
                             </div>
                             <div className={styles.item}>
@@ -117,7 +144,7 @@ export const Footer = () => {
                             </div>
                             <div className={styles.item}>
                                 <h4>
-                                    <Link to="/contact">Əlaqə</Link>
+                                    <Link to="/contact">{contactTitle}</Link>
                                 </h4>
                             </div>
                             <div className={styles.socials}>
