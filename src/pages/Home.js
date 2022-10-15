@@ -7,7 +7,9 @@ import { Footer } from "../components/layout/Footer";
 
 export const Home = () => {
     return (
-        <main className="home-main" style={{ marginTop: "12.8rem" }}>
+        <main className="home-main"
+        // style={{ marginTop: "12.8rem" }}
+        >
             <div className="panel">
                 <BannerVideo />
             </div>
