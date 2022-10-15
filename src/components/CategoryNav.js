@@ -59,6 +59,16 @@ export const CategoryNav = ({ subSlug }) => {
         );
     });
 
+    let button;
+
+    if (lang === "az") {
+        button = "Hamısı";
+    } else if (lang === "en") {
+        button = "All";
+    } else {
+        button = "Все";
+    }
+
     return (
         <div className="container">
             <div className={styles.nav}>
@@ -68,7 +78,7 @@ export const CategoryNav = ({ subSlug }) => {
                     }}
                     className={isActive === "" ? styles.active : ""}
                 >
-                    Hamısı
+                    {button}
                 </button>
                 {content}
             </div>

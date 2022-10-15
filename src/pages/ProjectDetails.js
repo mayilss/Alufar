@@ -10,19 +10,21 @@ import { useContext } from "react";
 import { ProjectContext } from "../contexts/ProjectContext";
 import scroll from "../icons/arrow-left.svg";
 import { Footer } from "../components/layout/Footer";
+import { LanguageContext } from "../contexts/LanguageContext";
 
 export const ProjectDetails = () => {
     const [project, setProject] = useState({});
     const [gallery, setGallery] = useState([]);
     const [slugState, setSlugState] = useState("");
     const { slugChanged, handleNextProject, handlePrevProject } = useContext(ProjectContext);
+    const {lang} = useContext(LanguageContext);
 
     useEffect(() => {
         const cancelToken = axios.CancelToken.source();
         const fetchProject = async () => {
             await axios(
                 process.env.REACT_APP_API_URL +
-                `/api/projects${slugState}?lang=az`
+                `/api/projects${slugState}?lang=${lang}`
             )
                 .then((res) => {
                     setProject(res.data.data);
@@ -58,7 +60,7 @@ export const ProjectDetails = () => {
         return () => {
             cancelToken.cancel();
         };
-    }, [slugChanged, slugState, project.gallery, gallery.length]);
+    }, [slugChanged, slugState, project.gallery, gallery.length, lang]);
     useEffect(() => {
         setSlugState("/" + sessionStorage.getItem("slug"));
     }, [slugChanged]);
@@ -66,6 +68,20 @@ export const ProjectDetails = () => {
     const createMarkup = (body) => {
         return { __html: body };
     };
+
+    let next;
+    let prev;
+
+    if (lang === "az") {
+        next = "Sonraki";
+        prev = 'Əvvəlki'
+    } else if (lang === "en") {
+        next = "Next";
+        prev = 'Previous'
+    } else {
+        next = "Следующий";
+        prev = 'Предыдущий'
+    }
 
     return (
         <>
@@ -94,11 +110,11 @@ export const ProjectDetails = () => {
                         </div>
                         <div className="pd-btnHolder">
                             <Button
-                                content="Əvvəlki"
+                                content={prev}
                                 click={handlePrevProject}
                             />
                             <Button
-                                content="Sonraki"
+                                content={next}
                                 click={handleNextProject}
                             />
                         </div>

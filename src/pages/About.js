@@ -14,29 +14,6 @@ import { Footer } from "../components/layout/Footer";
 import { useContext } from "react";
 import { LanguageContext } from "../contexts/LanguageContext";
 
-// const bottomContent = [
-//     {
-//         icon: icon1,
-//         title: "Munasib Qiymet",
-//         text: "Şirkətimiz münasib qiymətə Sizə yüksək keyfiyyətli məhsul və servis təqdim edir.",
-//     },
-//     {
-//         icon: icon2,
-//         title: "Yüksək keyfiyyət",
-//         text: "Biz məhsulumuzun keyfiyyətinə zamin dururuq. “Alufar” şirkətinin profilləri heç bir qatışıq olmadan (təxminən 98%), tərkibində az miqdarda dəmir olmaqla, təmiz alüminiumdan hazırlanmışdır.",
-//     },
-//     {
-//         icon: icon3,
-//         title: "Texniki dəstək",
-//         text: "Şirkətimiz öz alıcılarını mükəmməl texniki müşayiətlə təmin edir, habelə profillərin yığılması zamanı öz mütəxəssislərinin yardımını təklif edir.",
-//     },
-//     {
-//         icon: icon4,
-//         title: "Məhsulun Yoxlanışı",
-//         text: "“Alufar” şirkətinin mebel aksessuarları istehsal keyfiyyətinin üzə çıxarılması və daha da yaxşılaşdırılması üçün dəfələrlə testdən keçir.",
-//     },
-// ];
-
 export const About = () => {
     const [about, setAbout] = useState({});
     const [delivery, setDelivery] = useState({});

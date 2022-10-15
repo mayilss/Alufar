@@ -26,7 +26,7 @@ export const Product = () => {
             try {
                 const res = await axios(
                     process.env.REACT_APP_API_URL +
-                        `/api/products/${slug}/similar-products?lang=az&item=4`
+                    `/api/products/${slug}/similar-products?lang=az&item=4`
                 );
                 setSimilarProducts(res.data.data.products);
             } catch (error) {
@@ -44,7 +44,7 @@ export const Product = () => {
         const fetchProduct = async () => {
             await axios(
                 process.env.REACT_APP_API_URL +
-                    `/api/products/${slug}?lang=${lang}`,
+                `/api/products/${slug}?lang=${lang}`,
                 { cancelToken: cancelToken.token }
             )
                 .then((res) => {
@@ -75,11 +75,21 @@ export const Product = () => {
     const navigateCatalog = () => {
         window.open(
             process.env.REACT_APP_API_URL +
-                                        "/storage/" +
-                                        product.catalog_link,
+            "/storage/" +
+            product.catalog_link,
             "_blank"
         );
     };
+
+    let button;
+
+    if (lang === "az") {
+        button = "Kataloqa bax";
+    } else if (lang === "en") {
+        button = "See catalog";
+    } else {
+        button = "Посмотреть каталог";
+    }
 
     return (
         <main className={styles.page}>
@@ -109,7 +119,7 @@ export const Product = () => {
                                 <div
                                     className={styles.btnHolder}
                                 >
-                                    <Button click={navigateCatalog} noHover content="Kataloqa bax" />
+                                    <Button click={navigateCatalog} noHover content={button} />
                                 </div>
                             </div>
                         </div>

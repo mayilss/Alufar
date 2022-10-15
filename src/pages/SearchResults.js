@@ -48,9 +48,19 @@ export const SearchResults = () => {
         };
     }, [lang, value]);
 
+    let title;
+
+    if (lang === "az") {
+        title = "Axtarış nəticələri";
+    } else if (lang === "en") {
+        title = "Search results";
+    } else {
+        title = "Результаты поиска";
+    }
+
     return (
         <main className="container py-5">
-            <SimpleTitle title="Axtarış nəticələri" />
+            <SimpleTitle title={title} />
             <div className="row mt-5">
                 {results.products &&
                     results.products.map((item) => {
